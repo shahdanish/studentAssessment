@@ -1,4 +1,0 @@
-studentAssessment
-=================
-
-university project
