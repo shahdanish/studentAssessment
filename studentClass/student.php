@@ -1,18 +1,7 @@
-<?php 
-class Student { 
+<?php
 
-   var $Name;
-   var $Gender; 
-   var $GradeLevel; 
-   var $Schedule; 
+class student{
 
-   function goToClass() { 
-   } 
+}
 
-   function rideTheBus() { 
-   } 
-
-   function skipSchool() { 
-   } 
-} 
-?> 
+?>
