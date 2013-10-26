@@ -46,7 +46,7 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="studentprofile.php" method ="post"> 
+                            <form  action="main/studentprofile.php" method ="post"> 
                                 <h1> Sign up </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname" data-icon="u">Your username</label>

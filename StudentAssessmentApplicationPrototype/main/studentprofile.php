@@ -1,5 +1,5 @@
- <?php
- include 'class/studentclass.php';
+<?php
+include '../class/studentclass.php';
  
 $db = new database('localhost', 'studentassessment', 'root', '');
 // Perform a query selecting five articles

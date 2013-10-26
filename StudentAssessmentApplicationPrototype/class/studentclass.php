@@ -1,5 +1,4 @@
 <?php
-//define class
 class database
 {
 	//define variables
@@ -7,10 +6,8 @@ class database
 	var $str_db;
 	var $str_user;
 	var $str_password;
-	
 	var $res_connection;
 	var $res_result;
-
 	
 	// The constructor
 	function __construct($str_host, $str_db, $str_user, $str_password)
@@ -40,17 +37,17 @@ class database
 		}
 	}
 	
-	/*methods*/
+	/*methods of class*/
+	
 	function query($sql){
 		// Query SQL
 		return $this->res_result = mysql_query($sql, $this->res_connection);
-	}		
-
+	}	
+	
 	function fetch(){
 		// Fetch result		
 		return mysql_fetch_assoc($this->res_result);	
-	}		
-			
+	}				
 }
 
 ?>
