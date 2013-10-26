@@ -14,6 +14,7 @@
 
 
     <body>
+    	
         <div class="container">
             <section>				
                 <div id="container_demo" >
@@ -53,8 +54,18 @@
                                     <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690" />
                                 </p>
                                 <p> 
-                                    <label for="emailsignup" class="class" data-icon="e" > Class</label>
-                                    <input id="emailsignup" name="class" required="required" type="text" placeholder="Class"/> 
+                                    <div class="styled-select">
+										   <select name="classselected" id="classselected">
+										      <option>Bsse1st</option>
+										      <option>bsse2nd</option>
+										      <option>Bsse3rd</option>
+										      <option>bsse4th</option>
+										      <option>Bsse5th</option>
+										      <option>bsse6th</option>
+										      <option>Bsse7th</option>
+										      <option>bsse8th</option>
+										   </select>
+										</div>
                                 </p>
                                   <p> 
                                     <label for="emailsignup" class="rollnumber" data-icon="e" > Roll number </label>
@@ -79,5 +90,16 @@
                 </div>  
             </section>
         </div>
+        <script type="text/javascript">
+
+//for showing values are submitted
+	var loadUrl = "#";
+	$('#rollnumber').keydown(function(){	
+		var val = $("elm1").val();
+		console.log("value1=" + val );
+		$("#result").html(ajax_load).load(loadUrl, "value1=" + val);
+	});
+
+</script>
     </body>
 </html>
