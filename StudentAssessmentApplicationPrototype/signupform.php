@@ -50,7 +50,7 @@
                             <form  action="main/studentprofile.php" method ="post"> 
                                 <h1> Sign up </h1> 
                                 <p> 
-                                    <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
+                                    <label for="usernamesignup" class="uname">Your name</label>
                                     <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690" />
                                 </p>
                                 <p> 
@@ -68,11 +68,11 @@
 										</div>
                                 </p>
                                   <p> 
-                                    <label for="emailsignup" class="rollnumber" data-icon="e" > Roll number </label>
+                                    <label for="emailsignup" class="rollnumber" > Roll number </label>
                                     <input id="rollnumber" name="rollnumber" required="required" type="text" placeholder="rollnumber"/> 
                                   </p>
                                 <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
+                                    <label for="password" class="youpasswd"> Your password </label>
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 
