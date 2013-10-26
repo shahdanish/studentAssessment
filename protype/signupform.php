@@ -66,7 +66,7 @@
                                   <p> 
                                     <label for="emailsignup" class="rollnumber" data-icon="e" > Roll number </label>
                                     <input id="rollnumber" name="rollnumber" required="required" type="text" placeholder="rollnumber"/> 
-                                </p>
+                                  </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
