@@ -47,6 +47,16 @@ class database
 	function fetch(){
 		// Fetch result		
 		return mysql_fetch_assoc($this->res_result);	
+	
+	}
+	function sessionStart($id,$username)
+	{
+		session_start();
+		$_SESSION['id']=$id;
+		$_SESSION['username']=$username;
+	}
+	function sessionDestroy(){
+		$this->session_destroy();
 	}				
 }
 

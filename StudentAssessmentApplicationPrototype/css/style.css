@@ -185,6 +185,10 @@ p.signin.button{
 	text-align: right;
 	margin: 5px 0;
 }
+p.login.button{
+	text-align: center;
+	margin: 5px 0;
+}
 
 
 /* styling the checkbox "keep me logged in"*/
