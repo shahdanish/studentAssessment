@@ -33,7 +33,7 @@
                     <div id="wrapper">
                         <div id="login" class="animate form">
                             <form  action="teacherdashboard.php" autocomplete="on"> 
-                                <h1>Log in</h1> 
+                                <h1>Stundent Log In</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>
                                     <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
@@ -57,8 +57,8 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="main/studentprofile.php" method ="post"> 
-                                <h1> Sign up </h1> 
+                            <form  action="main/studentsignup.php" method ="post"> 
+                                <h1> Student Sign Up </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname">Your name</label>
                                     <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690" />
