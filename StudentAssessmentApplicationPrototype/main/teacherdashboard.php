@@ -10,6 +10,12 @@
 	<?php
 	include '../class/studentclass.php';
 	$db = new database('localhost', 'studentassessment', 'root', '');
+	if(isset($_POST['classtoadd']))
+		{
+			$sql="INSERT INTO class (class_data) 
+			VALUES ('$_POST[classtoadd]')";
+			$db->query($sql);
+		}	
 	if(isset($_POST['teacher_name'])||isset($_POST['teacher_name'])){
 	$tname=$_POST['teacher_name'];
 	$tpass=$_POST['teacher_pass'];
@@ -19,23 +25,8 @@
     $tid = $row['tid'];
 	$db->sessionStart($tname,$tid);	
 	}
-	if (!(isset($_SESSION['username']) && $_SESSION['username'] != '')) {
-	header("Location: ../teacherlogin.php");
-	}
-	else{
-		if(isset($_POST['classtoadd'])){
-		
-		 $class=$_POST['classtoadd'];
-			echo $class;
-		}
-		?>
-		
-	<div id="wrapper">
-				<p class="login button" id="logoutbutt"> 
-               		<input type="button" value="Logout" id="logout" > 
-				</p>
-	</div>
-	<div id="wrapper">
+	?>
+				<div id="wrapper">
                             <form action="#" method="post"> 
                                 <h1> Add classes to student sign up </h1> 
                                 <p> 
@@ -45,15 +36,14 @@
                                 <p class="signin button"> 
 									<input type="submit" value="addclass" id="submitted"/> 
 								</p>
-                                
-				            </form>
-    </div>
-	
-	<a href ="../backend/addclasses.php">go to add some classes</a>
- 
+                                <p class="login button" id="logoutbutt"> 
+	               					<input type="button" value="Logout" id="logout" > 
+								</p>
+					        </form>
+			    </div>	
+			    <div id="show_data">
+			    	
+			    </div>
 		
-		<?php
-	}
-	?>
 	</body>
  </html>
