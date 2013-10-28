@@ -30,7 +30,6 @@ class database
 	// The destructor
 	function __destruct()
 	{
-		// Close a mysql connection we might've created earlier
 		if ($this->res_connection)
 		{
 			  mysql_close($this->res_connection);
@@ -38,14 +37,11 @@ class database
 	}
 	
 	/*methods of class*/
-	
 	function query($sql){
-		// Query SQL
 		return $this->res_result = mysql_query($sql, $this->res_connection);
 	}	
 	
-	function fetch(){
-		// Fetch result		
+	function fetch(){	
 		return mysql_fetch_assoc($this->res_result);	
 	
 	}

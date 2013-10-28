@@ -11,24 +11,15 @@
 	include '../class/studentclass.php';
 	$db = new database('localhost', 'studentassessment', 'root', '');
 	if(isset($_POST['teacher_name'])||isset($_POST['teacher_name'])){
-	$tname=$_POST['teacher_name'];
-	$tpass=$_POST['teacher_pass'];
+	$tname = $_POST['teacher_name'];
+	$tpass = $_POST['teacher_pass'];
 	$sql = "SELECT * FROM teacherinfo WHERE teacher_name = '$tname' AND teacher_pass = '$tpass' ";
-	$result=$db->query($sql);
+	$result = $db->query($sql);
 	$row = $db->fetch();
     $tid = $row['tid'];
 	$db->sessionStart($tname,$tid);	
 	}
-	if (!(isset($_SESSION['username']) && $_SESSION['username'] != '')) {
-	header("Location: ../teacherlogin.php");
-	}
-	else{
-		if(isset($_POST['classtoadd'])){
-		
-		 $class=$_POST['classtoadd'];
-			echo $class;
-		}
-		?>
+	?>
 		
 	<div id="wrapper">
 				<p class="login button" id="logoutbutt"> 
@@ -51,9 +42,5 @@
 	
 	<a href ="../backend/addclasses.php">go to add some classes</a>
  
-		
-		<?php
-	}
-	?>
 	</body>
  </html>
