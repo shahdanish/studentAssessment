@@ -10,19 +10,29 @@
         <link rel="stylesheet" type="text/css" href="css/studentform.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
+		<script src="jquery/jquery-1.10.2.js" ></script>
     </head>
 
 
     <body>
-    	
+   <script type="text/javascript">
+ $( document ).ready(function() {
+        $( '#rollnumber' ).on( 'keyup', function( event ) {     	
+        this.value=this.value.replace(/[^0-9\.]/g, '');
+	 	var val = $("#rollnumber").val();
+		
+});});
+  
+</script>
         <div class="container">
-            <section>				
+            <section>			
+            	
                 <div id="container_demo" >
                     <a class="hiddenanchor" id="toregister"></a>
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="mysuperscript.php" autocomplete="on"> 
+                            <form  action="teacherdashboard.php" autocomplete="on"> 
                                 <h1>Log in</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>
@@ -33,8 +43,8 @@
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 <p class="keeplogin"> 
-									<input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
-									<label for="loginkeeping">Keep me logged in</label>
+									<!--input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
+									<label for="loginkeeping">Keep me logged in</label-->
 								</p>
                                 <p class="login button"> 
                                     <input type="submit" value="Login" /> 
@@ -68,14 +78,14 @@
 										</div>
                                 </p>
                                   <p> 
-                                    <label for="emailsignup" class="rollnumber" > Roll number </label>
+                                    <label for="rollnumber" class="rollnumber" > Roll number </label>
                                     <input id="rollnumber" name="rollnumber" required="required" type="text" placeholder="rollnumber"/> 
                                   </p>
                                 <p> 
                                     <label for="password" class="youpasswd"> Your password </label>
                                     <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
-                                
+ 
                                 <p class="signin button"> 
 									<input type="submit" value="Sign up"/> 
 								</p>
@@ -90,16 +100,5 @@
                 </div>  
             </section>
         </div>
-        <script type="text/javascript">
-
-//for showing values are submitted
-	var loadUrl = "#";
-	$('#rollnumber').keydown(function(){	
-		var val = $("elm1").val();
-		console.log("value1=" + val );
-		$("#result").html(ajax_load).load(loadUrl, "value1=" + val);
-	});
-
-</script>
     </body>
 </html>
