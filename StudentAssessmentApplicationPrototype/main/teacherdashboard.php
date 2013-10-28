@@ -27,17 +27,16 @@
 				</p>
 	</div>
 	<div id="wrapper">
-                            <form action="#" method="post"> 
-                                <h1> Add classes to student sign up </h1> 
-                                <p> 
-                                    <label for="usernamesignup" class="uname"> add classes</label>
-                                    <input id="classtoadd" name="classtoadd" required="required" type="text" placeholder="add in BS-Se-1st format" />
-                                </p>
-                                <p class="signin button"> 
-									<input type="submit" value="addclass" id="submitted"/> 
-								</p>
-                                
-				            </form>
+		<form action="#" method="post"> 
+			<h1> Add classes to student sign up </h1> 
+			<p> 
+				<label for="usernamesignup" class="uname"> add classes</label>
+				<input id="classtoadd" name="classtoadd" required="required" type="text" placeholder="add in BS-Se-1st format" />
+			</p>
+			<p class="signin button"> 
+				<input type="submit" value="addclass" id="submitted"/> 
+			</p>
+		</form>
     </div>
 	
 	<a href ="../backend/addclasses.php">go to add some classes</a>
