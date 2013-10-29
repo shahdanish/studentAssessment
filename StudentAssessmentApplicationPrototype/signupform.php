@@ -12,12 +12,7 @@
  $( document ).ready(function() {
         $('#rollnumber' ).on( 'keyup', function( event ) {     	
         this.value=this.value.replace(/[^0-9\.]/g, '');
-<<<<<<< HEAD
-        $('#submit').on('click',function(event){
-        	$('#show_status').load("../main/studentsignup.php",{val: value});
-        });
-    });
-=======
+
 	 	var val = $("#rollnumber").val();
 	});
 	$("#submit_student").click(function(){
@@ -34,7 +29,6 @@
 	});
 });
   
->>>>>>> dbf07b30a49fd2bf0855bc829fed64bf1db0d456
 </script>
         <div class="container">
             <section>			
@@ -97,18 +91,14 @@
                                     <label for="password" class="youpasswd"> Your password </label>
                                     <input id="password_signup" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
-<<<<<<< HEAD
- 
-                                <p class="signin button"> 
-									<input type="button" value="Sign up" id="submit"/>
-=======
+
 								<p>
 									<span class="show_msg change_link"></span>
 									<span class="error">must provide all values</span>
                                 </p>
 								<p class="signin button"> 
 									<input type="button" value="Sign up" id="submit_student"/> 
->>>>>>> dbf07b30a49fd2bf0855bc829fed64bf1db0d456
+
 								</p>
 								<span id="show_status" style=""></span>
                                 <p class="change_link">  
