@@ -50,10 +50,7 @@ class database
 		session_start();
 		$_SESSION['id']=$id;
 		$_SESSION['username']=$username;
-	}
-	function sessionDestroy(){
-		$this->session_destroy();
-	}				
+	}			
 }
 
 ?>
