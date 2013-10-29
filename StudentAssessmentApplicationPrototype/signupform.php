@@ -26,10 +26,10 @@
 		var val2 = $("#classselected").val();
 		var val3 = $("#rollnumber").val();
 		var val4 = $("#password_signup").val();
-		alert(val4);
 		if(val1==""||val2==""||val3==""||val4==""){
 			$(".error").show();
 		} else {
+			$(".error").hide();
 			$(".show_msg").load("main/studentsignup.php",{var1:val1,var2:val2,var3:val3,var4:val4});
 		}
 	});
@@ -104,7 +104,7 @@
 								<p class="signin button"> 
 									<input type="button" value="Sign up" id="submit_student"/> 
 								</p>
-								<span id="show status" style="display: none">this is span</span>
+								<span id="show_status"></span>
                                 <p class="change_link">  
 									Already a member ?
 									<a href="#tologin" class="to_register"> Go and log in </a>

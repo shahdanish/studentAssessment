@@ -261,3 +261,6 @@ a{
 	     -o-transition: all 0.2s linear;
 	        transition: all 0.2s linear;
 }
+#register .show_msg,#register .error{
+	float: left;
+}
