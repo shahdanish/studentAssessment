@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
@@ -12,17 +7,15 @@
 		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
 		<script src="jquery/jquery-1.10.2.js" ></script>
     </head>
-
-
     <body>
    <script type="text/javascript">
  $( document ).ready(function() {
-        $( '#rollnumber' ).on( 'keyup', function( event ) {     	
+        $('#rollnumber' ).on( 'keyup', function( event ) {     	
         this.value=this.value.replace(/[^0-9\.]/g, '');
-	 	var val = $("#rollnumber").val();
-		
-});});
-  
+        $('#submit').on('click',function(event){
+        	$('#show_status').load("../main/studentsignup.php",{val: value});
+        });
+    });
 </script>
         <div class="container">
             <section>			
@@ -57,11 +50,11 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="main/studentsignup.php" method ="post"> 
+                            <form > 
                                 <h1> Student Sign Up </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname">Your name</label>
-                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690" />
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
                                 </p>
                                 <p> 
                                     <div class="styled-select">
@@ -87,9 +80,9 @@
                                 </p>
  
                                 <p class="signin button"> 
-									<input type="submit" value="Sign up"/> 
+									<input type="button" value="Sign up" id="submit"/>
 								</p>
-								<span id="show status" style="display: none">this is span</span>
+								<span id="show_status" style=""></span>
                                 <p class="change_link">  
 									Already a member ?
 									<a href="#tologin" class="to_register"> Go and log in </a>
