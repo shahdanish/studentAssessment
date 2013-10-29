@@ -8,25 +8,34 @@
     </head>
  <body>
 	<?php
-	include '../class/studentclass.php';
-	$db = new database('localhost', 'studentassessment', 'root', '');
-	if(isset($_POST['teacher_name'])||isset($_POST['teacher_pass'])){
-	$tname = $_POST['teacher_name'];
-	$tpass = $_POST['teacher_pass'];
-	$sql = "SELECT * FROM teacherinfo WHERE teacher_name = '$tname' AND teacher_pass = '$tpass' ";
-	$result = $db->query($sql);
-	$row = $db->fetch();
-    $tid = $row['tid'];
-	$db->sessionStart($tid,$tname);	
-		session_destroy();
-		if(!isset($_SESSION['id'])){
-			header("Location:../teacherlogin.php");
-		}
+	include '../classes/databaseclass.php';
+	include '../classes/teacherclass.php';
+	$db = new database();
+	$teacherobj = new teacher();
+	if(isset($_POST['teacher_name'])&&isset($_POST['teacher_pass'])){
+		$tname = $_POST['teacher_name'];
+		$tpass = $_POST['teacher_pass'];
+		$sql = "SELECT * FROM teacherinfo WHERE teacher_name = '$tname' AND teacher_pass = '$tpass'";
+		$result = $db->query($sql);
+		$row = $db->fetch();
+		$tid = $row['tid'];
+		$teacherobj->sessionStart($tid,$tname);
+	}
+	if(!isset($_SESSION['id'])){
+		header("Location:teacherlogin.php");
+	}
+	if(isset($_POST['logout'])){
+		$teacherobj->teacherSessionDestroy();
 	}
 	?>
 	<div class="teacher_panel">
 		<div class="teacher_options">
 			<h1 class="teacher_heading">Teacher Options</h1>
+				<form method="post" class="signin button">
+					<p class="signin button"> 
+						<input type="submit" value="logout" name="logout" id="logout" /> 
+					</p>
+				</form>
 		</div>
 		<div id="container_demo">
 			<div id="wrapper">

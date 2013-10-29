@@ -7,10 +7,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" type="text/css" href="css/studentform.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
-		<script src="jquery/jquery-1.10.2.js" ></script>
+        <link rel="stylesheet" type="text/css" href="../css/studentform.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
+		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
 
 
@@ -30,7 +30,7 @@
                 <div id="container_demo" >
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="main/teacherdashboard.php" autocomplete="on" method="post"> 
+                            <form  action="teacherdashboard.php" autocomplete="on" method="post"> 
                                 <h1>Teacher Log in</h1> 
                                 <p> 
                                     <label for="teacher_name" class="teacher_name" data-icon="u" > Your email or username </label>

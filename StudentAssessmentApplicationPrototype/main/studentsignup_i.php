@@ -1,23 +1,16 @@
-<!DOCTYPE html>
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6 lt8"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7 lt8"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8 lt8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
+<html>
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" type="text/css" href="css/studentform.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
-		<script src="jquery/jquery-1.10.2.js" ></script>
+        <link rel="stylesheet" type="text/css" href="../css/studentform.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
+		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
-
-
     <body>
    <script type="text/javascript">
  $( document ).ready(function() {
-        $( '#rollnumber' ).on( 'keyup', function( event ) {     	
+        $('#rollnumber' ).on( 'keyup', function( event ) {    	
         this.value=this.value.replace(/[^0-9\.]/g, '');
 	 	var val = $("#rollnumber").val();
 	});
@@ -30,11 +23,10 @@
 			$(".error").show();
 		} else {
 			$(".error").hide();
-			$(".show_msg").load("main/studentsignup.php",{var1:val1,var2:val2,var3:val3,var4:val4});
+			$(".show_msg").load("studentsignup.php",{var1:val1,var2:val2,var3:val3,var4:val4});
 		}
 	});
 });
-  
 </script>
         <div class="container">
             <section>			
@@ -44,7 +36,7 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="teacherdashboard.php" autocomplete="on"> 
+                            <form  action="" autocomplete="on"> 
                                 <h1>Stundent Log In</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>
@@ -69,11 +61,11 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form  action="main/studentsignup.php" method ="post"> 
+                            <form> 
                                 <h1> Student Sign Up </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname">Your name</label>
-                                    <input id="usernamesignup" name="username" required="required" type="text" placeholder="mysuperusername690" />
+                                    <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername690" />
                                 </p>
                                 <p> 
                                     <div class="styled-select">
@@ -87,7 +79,7 @@
 										      <option>Bsse7th</option>
 										      <option>bsse8th</option>
 										   </select>
-										</div>
+									</div>
                                 </p>
                                   <p> 
                                     <label for="rollnumber" class="rollnumber" > Roll number </label>
@@ -95,16 +87,13 @@
                                   </p>
                                 <p> 
                                     <label for="password" class="youpasswd"> Your password </label>
-                                    <input id="password_signup" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                    <input id="password_signup" name="password_signup" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
-								<p>
-									<span class="show_msg change_link"></span>
-									<span class="error">must provide all values</span>
-                                </p>
-								<p class="signin button"> 
-									<input type="button" value="Sign up" id="submit_student"/> 
+                                <p class="signin button"> 
+									<span class="show_msg"></span>
+									<span class="error">you must provide all values</span>
+									<input type="button" value="Sign up" id="submit_student"/>
 								</p>
-								<span id="show_status"></span>
                                 <p class="change_link">  
 									Already a member ?
 									<a href="#tologin" class="to_register"> Go and log in </a>
