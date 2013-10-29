@@ -20,8 +20,20 @@
         $( '#rollnumber' ).on( 'keyup', function( event ) {     	
         this.value=this.value.replace(/[^0-9\.]/g, '');
 	 	var val = $("#rollnumber").val();
-		
-});});
+	});
+	$("#submit_student").click(function(){
+		var val1 = $("#usernamesignup").val();
+		var val2 = $("#classselected").val();
+		var val3 = $("#rollnumber").val();
+		var val4 = $("#password_signup").val();
+		alert(val4);
+		if(val1==""||val2==""||val3==""||val4==""){
+			$(".error").show();
+		} else {
+			$(".show_msg").load("main/studentsignup.php",{var1:val1,var2:val2,var3:val3,var4:val4});
+		}
+	});
+});
   
 </script>
         <div class="container">
@@ -40,7 +52,7 @@
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                    <input id="password_login" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 <p class="keeplogin"> 
 									<!--input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
@@ -83,11 +95,14 @@
                                   </p>
                                 <p> 
                                     <label for="password" class="youpasswd"> Your password </label>
-                                    <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                    <input id="password_signup" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
- 
-                                <p class="signin button"> 
-									<input type="submit" value="Sign up"/> 
+								<p>
+									<span class="show_msg change_link"></span>
+									<span class="error">must provide all values</span>
+                                </p>
+								<p class="signin button"> 
+									<input type="button" value="Sign up" id="submit_student"/> 
 								</p>
                                 <p class="change_link">  
 									Already a member ?
