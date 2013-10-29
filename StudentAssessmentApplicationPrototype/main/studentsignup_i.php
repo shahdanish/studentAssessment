@@ -2,17 +2,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-        <link rel="stylesheet" type="text/css" href="css/studentform.css" />
-        <link rel="stylesheet" type="text/css" href="css/style.css" />
-		<link rel="stylesheet" type="text/css" href="css/animate-custom.css" />
-		<script src="jquery/jquery-1.10.2.js" ></script>
+        <link rel="stylesheet" type="text/css" href="../css/studentform.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
+		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
     <body>
    <script type="text/javascript">
  $( document ).ready(function() {
-        $('#rollnumber' ).on( 'keyup', function( event ) {     	
+        $('#rollnumber' ).on( 'keyup', function( event ) {    	
         this.value=this.value.replace(/[^0-9\.]/g, '');
-
 	 	var val = $("#rollnumber").val();
 	});
 	$("#submit_student").click(function(){
@@ -20,15 +19,14 @@
 		var val2 = $("#classselected").val();
 		var val3 = $("#rollnumber").val();
 		var val4 = $("#password_signup").val();
-		alert(val4);
 		if(val1==""||val2==""||val3==""||val4==""){
 			$(".error").show();
 		} else {
-			$(".show_msg").load("main/studentsignup.php",{var1:val1,var2:val2,var3:val3,var4:val4});
+			$(".error").hide();
+			$(".show_msg").load("studentsignup.php",{var1:val1,var2:val2,var3:val3,var4:val4});
 		}
 	});
 });
-  
 </script>
         <div class="container">
             <section>			
@@ -38,7 +36,7 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="teacherdashboard.php" autocomplete="on"> 
+                            <form  action="" autocomplete="on"> 
                                 <h1>Stundent Log In</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>
@@ -63,7 +61,7 @@
                         </div>
 
                         <div id="register" class="animate form">
-                            <form > 
+                            <form> 
                                 <h1> Student Sign Up </h1> 
                                 <p> 
                                     <label for="usernamesignup" class="uname">Your name</label>
@@ -81,7 +79,7 @@
 										      <option>Bsse7th</option>
 										      <option>bsse8th</option>
 										   </select>
-										</div>
+									</div>
                                 </p>
                                   <p> 
                                     <label for="rollnumber" class="rollnumber" > Roll number </label>
@@ -89,18 +87,13 @@
                                   </p>
                                 <p> 
                                     <label for="password" class="youpasswd"> Your password </label>
-                                    <input id="password_signup" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                    <input id="password_signup" name="password_signup" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
-
-								<p>
-									<span class="show_msg change_link"></span>
-									<span class="error">must provide all values</span>
-                                </p>
-								<p class="signin button"> 
-									<input type="button" value="Sign up" id="submit_student"/> 
-
+                                <p class="signin button"> 
+									<span class="show_msg"></span>
+									<span class="error">you must provide all values</span>
+									<input type="button" value="Sign up" id="submit_student"/>
 								</p>
-								<span id="show_status" style=""></span>
                                 <p class="change_link">  
 									Already a member ?
 									<a href="#tologin" class="to_register"> Go and log in </a>

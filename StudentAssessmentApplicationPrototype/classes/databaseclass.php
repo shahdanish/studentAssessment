@@ -10,13 +10,13 @@ class database
 	var $res_result;
 	
 	// The constructor
-	function __construct($str_host, $str_db, $str_user, $str_password)
+	function __construct()
 	{
 		// Set-up the class variables from the parameters.
-		$this->str_host     = (string) $str_host;
-		$this->str_db       = (string) $str_db;
-		$this->str_user     = (string) $str_user;
-		$this->str_password = (string) $str_password;
+		$this->str_host     = "localhost";
+		$this->str_db       = "studentassessment";
+		$this->str_user     = "root";
+		$this->str_password = "";
 		// Connect to MySQL
 		$this->res_connection = mysql_connect($this->str_host, $this->str_user, $this->str_password);
 		if(!$this->res_connection)
@@ -45,12 +45,7 @@ class database
 		return mysql_fetch_assoc($this->res_result);	
 	
 	}
-	function sessionStart($id,$username)
-	{
-		session_start();
-		$_SESSION['id']=$id;
-		$_SESSION['username']=$username;
-	}			
+	
 }
 
 ?>
