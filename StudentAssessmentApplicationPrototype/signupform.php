@@ -104,6 +104,7 @@
 								<p class="signin button"> 
 									<input type="button" value="Sign up" id="submit_student"/> 
 								</p>
+								<span id="show status" style="display: none">this is span</span>
                                 <p class="change_link">  
 									Already a member ?
 									<a href="#tologin" class="to_register"> Go and log in </a>
