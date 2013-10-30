@@ -45,7 +45,6 @@ class database
 		return mysql_fetch_assoc($this->res_result);	
 	
 	}
-	
 }
 
 ?>
