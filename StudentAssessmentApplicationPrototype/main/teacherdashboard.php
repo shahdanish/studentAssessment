@@ -10,17 +10,8 @@
 	<?php
 	include '../classes/databaseclass.php';
 	include '../classes/teacherclass.php';
-	$db = new database();
 	$teacherobj = new teacher();
-	if(isset($_POST['teacher_name'])&&isset($_POST['teacher_pass'])){
-		$tname = $_POST['teacher_name'];
-		$tpass = $_POST['teacher_pass'];
-		$sql = "SELECT * FROM teacherinfo WHERE teacher_name = '$tname' AND teacher_pass = '$tpass'";
-		$result = $db->query($sql);
-		$row = $db->fetch();
-		$tid = $row['tid'];
-		$teacherobj->sessionStart($tid,$tname);
-	}
+	$teacherobj->checkToStartSession($_POST);
 	if(!isset($_SESSION['id'])){
 		header("Location:teacherlogin.php");
 	}
