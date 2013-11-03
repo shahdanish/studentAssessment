@@ -28,6 +28,21 @@
 	});
 });
 </script>
+<?php 
+
+	include '../classes/databaseclass.php';
+	$dbobj= new database();
+	$sql = "SELECT * FROM class";
+	$result = $dbobj->query($sql);
+	$table = "";
+	while($row=$dbobj->fetch($result)) {   
+	$tablerow = "<option>" . $row['class_data'] . "</option>";
+	$table .= $tablerow;
+} 
+	//while($row){
+	 //echo $row['class_data'];
+	 //}
+?>
         <div class="container">
             <section>			
             	
@@ -70,14 +85,7 @@
                                 <p> 
                                     <div class="styled-select">
 										   <select name="classselected" id="classselected">
-										      <option>Bsse1st</option>
-										      <option>bsse2nd</option>
-										      <option>Bsse3rd</option>
-										      <option>bsse4th</option>
-										      <option>Bsse5th</option>
-										      <option>bsse6th</option>
-										      <option>Bsse7th</option>
-										      <option>bsse8th</option>
+										  <?php echo($table); ?>
 										   </select>
 									</div>
                                 </p>

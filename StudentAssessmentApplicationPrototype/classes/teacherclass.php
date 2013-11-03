@@ -16,6 +16,26 @@ class teacher{
 			$this->sessionStart($tid,$tname);
 		}
 	}
+	function TeacherAddClass($post){
+		@extract($post);
+		if(isset($_POST['classtoadd'])){
+			$classname = $_POST['classtoadd'];
+			$sql = "INSERT INTO class (class_data)
+			VALUES ('$classname')";
+			$this->dbobj->query($sql);
+			}
+	}
+	
+			
+		/*if(isset($_POST['var1'])){
+			echo"working";
+			$classname = $_POST['var1'];
+			$sql = "INSERT INTO class (class_data);
+			VALUES ('$classname')";
+			$this->dbobj->query($sql);
+			//header("location:../signupform.php");
+		}*/
+	
 	function sessionStart($id,$username){
 		session_start();
 		$_SESSION['id']=$id;

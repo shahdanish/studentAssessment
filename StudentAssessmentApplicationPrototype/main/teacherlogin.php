@@ -19,7 +19,6 @@
  $( document ).ready(function() {
         $( '#rollnumber' ).on( 'keyup', function( event ) {     	
         this.value=this.value.replace(/[^0-9\.]/g, '');
-	 	var val = $("#rollnumber").val();
 		
 });});
   
