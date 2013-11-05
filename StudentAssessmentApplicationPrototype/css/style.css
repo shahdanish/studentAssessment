@@ -373,3 +373,6 @@ p.change_link{
 	height: 90px;
 	background: transparent;
 }
+p.signin.button span{
+	float: left;
+}

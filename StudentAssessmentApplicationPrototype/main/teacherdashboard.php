@@ -1,26 +1,32 @@
-<html>
-	<head>
-        <meta charset="UTF-8" />
-        <link rel="stylesheet" type="text/css" href="../css/studentform.css" />
-        <link rel="stylesheet" type="text/css" href="../css/style.css" />
-		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
-    </head>
- <body>
-	<?php
+<?php
+	session_start();
 	include '../classes/databaseclass.php';
 	include '../classes/teacherclass.php';
 	$teacherobj = new teacher();
 	$teacherobj->checkToStartSession($_POST);
-	if(!isset($_SESSION['id'])){
+	if(!isset($_SESSION['username'])){
 		header("Location:teacherlogin.php");
 	}
 	if(isset($_POST['logout'])){
 		$teacherobj->teacherSessionDestroy();
 	}
 	if(isset($_POST['addclass'])){
-	$teacherobj->TeacherAddClass($_POST);
+		$teacherobj->TeacherAddClass($_POST);
+		$result = "class is added";
 	}
-	?>
+?>
+<html>
+	<head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" type="text/css" href="../css/studentform.css" />
+        <link rel="stylesheet" type="text/css" href="../css/style.css" />
+		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
+		<script src="../jquery/jquery-1.10.2.js" ></script>
+    </head>
+	<script>
+			setTimeout("if($('#myMsg').length>0){$('#myMsg').css('display','none');}",4000);
+	</script>
+ <body>
 	<div class="teacher_panel">
 		<div class="teacher_options">
 			<h1 class="teacher_heading">Teacher Options</h1>
@@ -38,10 +44,9 @@
 					<p> 
 						<label for="usernamesignup" class="uname"> add classes</label>
 						<input id="classtoadd" name="classtoadd" required="required" type="text" placeholder="add in BS-Se-1st format" />
-						<span class="error">you must provide all values</span>
-						<span class="show_msg"></span>
 					</p>
 					<p class="signin button"> 
+						<?php if(isset($result)){ echo "<span class='msg' id='myMsg'>class is added</span>"; }?>
 						<input type="submit" value="addclass" id="addclass" name="addclass"/> 
 					</p>
 				</form>

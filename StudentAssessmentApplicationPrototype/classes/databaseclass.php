@@ -27,15 +27,6 @@ class database
 		return mysql_select_db($this->str_db, $this->res_connection);
 	}
 	
-	// The destructor
-	function __destruct()
-	{
-		if ($this->res_connection)
-		{
-			  mysql_close($this->res_connection);
-		}
-	}
-	
 	/*methods of class*/
 	function query($sql){
 		return $this->res_result = mysql_query($sql, $this->res_connection);

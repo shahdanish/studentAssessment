@@ -26,21 +26,10 @@ class teacher{
 			}
 	}
 	
-			
-		/*if(isset($_POST['var1'])){
-			echo"working";
-			$classname = $_POST['var1'];
-			$sql = "INSERT INTO class (class_data);
-			VALUES ('$classname')";
-			$this->dbobj->query($sql);
-			//header("location:../signupform.php");
-		}*/
-	
 	function sessionStart($id,$username){
-		session_start();
+		//session_start();
 		$_SESSION['id']=$id;
 		$_SESSION['username']=$username;
-		//header("location:../signupform.php");
 	}
 	
 	function teacherSessionDestroy(){
