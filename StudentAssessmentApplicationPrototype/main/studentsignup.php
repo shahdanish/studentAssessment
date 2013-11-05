@@ -10,9 +10,9 @@
     <body>
    <script type="text/javascript">
  $( document ).ready(function() {
-        $('#rollnumber' ).on( 'keyup', function( event ) {    	
-        this.value=this.value.replace(/[^0-9\.]/g, '');
-	 	var val = $("#rollnumber").val();
+		$('#rollnumber' ).on( 'keyup', function( event ) {
+		this.value=this.value.replace(/[^0-9\.]/g, '');
+		var val = $("#rollnumber").val();
 	});
 	$("#submit_student").click(function(){
 		var val1 = $("#usernamesignup").val();
