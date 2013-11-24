@@ -36,6 +36,11 @@
 						
 					</p>
 				</form>
+			<div id="my_menu">
+				<ul>
+					<li><a href="addquestion.php">add class category</a></li>
+				</ul>
+			</div>	
 		</div>
 		<div id="container_demo">
 			<div id="wrapper">
