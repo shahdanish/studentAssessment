@@ -16,7 +16,7 @@ class database
 		$this->str_host     = "localhost";
 		$this->str_db       = "studentassessment";
 		$this->str_user     = "root";
-		$this->str_password = "gosign";
+		$this->str_password = "";
 		// Connect to MySQL
 		$this->res_connection = mysql_connect($this->str_host, $this->str_user, $this->str_password);
 		if(!$this->res_connection)
