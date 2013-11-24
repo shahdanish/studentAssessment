@@ -25,6 +25,25 @@ class teacher{
 			$this->dbobj->query($sql);
 			}
 	}
+	function TeacherAddQuest($post){
+		@extract($post);
+		if(isset($_POST['addquestion'])){
+			$question = $_POST['question'];
+			$questcat = $_POST['questcatselected'];
+			$sql = "INSERT INTO question (quest,quest_cat)
+			VALUES ('$question','$questcat')";
+			$this->dbobj->query($sql);
+			}
+	}
+	function TeacherAddCategory($post){
+		@extract($post);
+		if(isset($_POST['addcategory'])){
+			$cat = $_POST['questioncat'];
+			$sql = "INSERT INTO questcat (category)
+			VALUES ('$cat')";
+			$this->dbobj->query($sql);
+			}
+	}
 	
 	function sessionStart($id,$username){
 		//session_start();
