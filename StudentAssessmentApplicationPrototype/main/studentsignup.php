@@ -51,15 +51,15 @@
                     <a class="hiddenanchor" id="tologin"></a>
                     <div id="wrapper">
                         <div id="login" class="animate form">
-                            <form  action="" autocomplete="on"> 
+                            <form  action="studentdashboard.php" autocomplete="on" method="post"> 
                                 <h1>Stundent Log In</h1> 
                                 <p> 
                                     <label for="username" class="uname" data-icon="u" > Your email or username </label>
-                                    <input id="username" name="username" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
+                                    <input id="student_name" name="student_name" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
                                 </p>
                                 <p> 
                                     <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="password_login" name="password" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+                                    <input id="student_pass" name="student_pass" required="required" type="password" placeholder="eg. X8df!90EO" /> 
                                 </p>
                                 <p class="keeplogin"> 
 									<!--input type="checkbox" name="loginkeeping" id="loginkeeping" value="loginkeeping" /> 
