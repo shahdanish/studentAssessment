@@ -3,8 +3,13 @@
 	include '../classes/databaseclass.php';
 	include '../classes/studentclass.php';
 	$studentobj = new student();
-	$studentobj->checkToStartSession($_POST);
-	if( !isset($_SESSION['username']) AND !isset($_SESSION['id'])){
+	
+	if(isset($_POST['student_name'])&&isset($_POST['student_pass'])){
+		$sname = $_POST['student_name'];
+		$spass = $_POST['student_pass'];
+		$studentobj->checkToStartSession($sname,$spass); 
+	 }
+	if(!isset($_SESSION['username'])){
 		header("Location:studentsignup.php");
 	}
 	if(isset($_POST['logout'])){
@@ -20,19 +25,13 @@
 		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
  <body>
+	<div class="teacher_panel">
 		<div id="container_demo">
 			<div id="wrapper">
 				<form method="post" action="#" > 
-					<h1> Student Assessment Profile </h1> 
-					<?php
-					echo $_POST['student_name'];
-					echo  "this is session id".$_SESSION['id'];
-					echo "this ia a session ".$_SESSION['username'];
-					?>
-					
+					<h1> Add classes to student sign up </h1> 
 					<p class="signin button"> 
 						<input type="submit" value="logout" name="logout" id="logout" /> 
-						
 					</p>
 				</form>
 			</div>
