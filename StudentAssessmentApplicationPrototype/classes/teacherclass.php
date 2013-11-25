@@ -4,44 +4,41 @@ class teacher{
 	function teacher(){
 		$this->dbobj=new database();
 	}
-	function checkToStartSession($post){
-		@extract($post);
-		if(isset($_POST['teacher_name'])&&isset($_POST['teacher_pass'])){
-			$tname = $_POST['teacher_name'];
-			$tpass = $_POST['teacher_pass'];
-			$sql = "SELECT * FROM teacherinfo WHERE teacher_name = '$tname' AND teacher_pass = '$tpass'";
-			$result = $this->dbobj->query($sql);
-			$row = $this->dbobj->fetch();
+	function checkToStartSession($tn,$tp){
+		$sql = "SELECT * FROM teacherinfo";
+		$result = $this->dbobj->query($sql);
+		$row = mysql_fetch_assoc($result);
+		if($row['teacher_name']==$tn&&$row['teacher_pass']==$tp){
 			$tid = $row['tid'];
-			$this->sessionStart($tid,$tname);
+			$this->sessionStart($tid,$tn);
 		}
 	}
 	function TeacherAddClass($post){
 		@extract($post);
 		if(isset($_POST['classtoadd'])){
-			$classname = $_POST['classtoadd'];
-			$sql = "INSERT INTO class (class_data)
-			VALUES ('$classname')";
-			$this->dbobj->query($sql);
+				$classname = $_POST['classtoadd'];
+				$sql = "INSERT INTO class (class_data)
+				VALUES ('$classname')";
+				$this->dbobj->query($sql);
 			}
 	}
 	function TeacherAddQuest($post){
 		@extract($post);
 		if(isset($_POST['addquestion'])){
-			$question = $_POST['question'];
-			$questcat = $_POST['questcatselected'];
-			$sql = "INSERT INTO question (quest,quest_cat)
-			VALUES ('$question','$questcat')";
-			$this->dbobj->query($sql);
+				$question = $_POST['question'];
+				$questcat = $_POST['questcatselected'];
+				$sql = "INSERT INTO question (quest,quest_cat)
+				VALUES ('$question','$questcat')";
+				$this->dbobj->query($sql);
 			}
 	}
 	function TeacherAddCategory($post){
 		@extract($post);
 		if(isset($_POST['addcategory'])){
-			$cat = $_POST['questioncat'];
-			$sql = "INSERT INTO questcat (category)
-			VALUES ('$cat')";
-			$this->dbobj->query($sql);
+				$cat = $_POST['questioncat'];
+				$sql = "INSERT INTO questcat (category)
+				VALUES ('$cat')";
+				$this->dbobj->query($sql);
 			}
 	}
 	

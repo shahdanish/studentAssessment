@@ -1,9 +1,14 @@
 <?php
 	session_start();
+	//echo "thsii is session".$_SESSION['username'];
 	include '../classes/databaseclass.php';
 	include '../classes/teacherclass.php';
 	$teacherobj = new teacher();
-	$teacherobj->checkToStartSession($_POST);
+	if(isset($_POST['teacher_name'])&&isset($_POST['teacher_pass'])){
+		$tname = $_POST['teacher_name'];
+		$tpass = $_POST['teacher_pass'];
+		$teacherobj->checkToStartSession($tname,$tpass); 
+	}
 	if(!isset($_SESSION['username'])){
 		header("Location:teacherlogin.php");
 	}
