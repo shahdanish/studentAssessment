@@ -22,16 +22,18 @@ class student{
 		$result = $this->dbobj->query($sql);
 		$row = mysql_fetch_assoc($result);
 		if($row['std_name']==$tn&&$row['std_password']==$tp){
-		echo $row['std_id'];
+		
 			$tid = $row['std_id'];
-			$this->sessionStart($tid,$tn);
+			$cls =$row['std_class'];
+			$this->sessionStart($tid,$tn,$cls);
 		}
 	}
 	
-	function sessionStart($id,$username){
+	function sessionStart($id,$username,$clas){
 		//session_start();
 		$_SESSION['id']=$id;
 		$_SESSION['username']=$username;
+		$_SESSION['clas']=$clas;
 	}
 	
 	function studentSessionDestroy(){

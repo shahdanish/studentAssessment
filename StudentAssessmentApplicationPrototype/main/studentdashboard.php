@@ -29,7 +29,12 @@
 		<div id="container_demo">
 			<div id="wrapper">
 				<form method="post" action="#" > 
-					<h1> Add classes to student sign up </h1> 
+					<h1>  student Assessment Page </h1> 
+					<div class="teacher_panel">
+						<p style="text-align:center">Student info  </p>
+						<p style="text-align:center">Student name : <?php  echo $sname; ?> </p>
+						<p style="text-align:center">Semester:  <?php echo $_SESSION['clas'];  ?>    </p>
+					</div>
 					<p class="signin button"> 
 						<input type="submit" value="logout" name="logout" id="logout" /> 
 					</p>
