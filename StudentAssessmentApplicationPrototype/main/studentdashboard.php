@@ -3,12 +3,9 @@
 	include '../classes/databaseclass.php';
 	include '../classes/studentclass.php';
 	$studentobj = new student();
-<<<<<<< HEAD
 	if(!isset($_SESSION['username'])){
 		header("Location:studentsignup.php");
 	}
-=======
->>>>>>> a587b88e05095ca860eff7ecf16ec706bdd4c380
 	if(isset($_POST['student_name'])&&isset($_POST['student_pass'])){
 		$sname = $_POST['student_name'];
 		$spass = $_POST['student_pass'];
