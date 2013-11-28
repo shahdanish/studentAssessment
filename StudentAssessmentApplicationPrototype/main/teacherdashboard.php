@@ -43,7 +43,7 @@
 				</form>
 			<div id="my_menu">
 				<ul>
-					<li><a href="addquestion.php">add class category</a></li>
+					<li><a href="addquestion.php">Add Question category</a></li>
 				</ul>
 			</div>	
 		</div>

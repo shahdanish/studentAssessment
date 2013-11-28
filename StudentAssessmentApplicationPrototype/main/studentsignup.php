@@ -38,10 +38,7 @@
 	while($row=$dbobj->fetch($result)) {   
 	$tablerow = "<option>" . $row['class_data'] . "</option>";
 	$table .= $tablerow;
-} 
-	//while($row){
-	 //echo $row['class_data'];
-	 //}
+}
 ?>
         <div class="container">
             <section>			
@@ -66,7 +63,7 @@
 									<label for="loginkeeping">Keep me logged in</label-->
 								</p>
                                 <p class="login button"> 
-                                    <input type="submit" value="Login" /> 
+                                    <input type="submit" name="login" value="Login" /> 
 								</p>
                                 <p class="change_link">
 									Not a member yet ?
