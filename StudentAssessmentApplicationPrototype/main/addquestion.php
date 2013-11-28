@@ -54,6 +54,11 @@
 						
 					</p>
 				</form>
+				<div id="my_menu">
+				<ul>
+					<li><a href="teacherdashboard.php">Add Class </a></li>
+				</ul>
+			</div>	
 		</div>
 		<div id="container_demo">
 			<div id="wrapper">
@@ -68,6 +73,7 @@
 						<input type="submit" value="addcategory" id="addcategory" name="addcategory"/> 
 					</p>
 			</form>
+			
 				<form method="post" action="#" > 
 					<h1> Add Question </h1> 
 					<p> 
