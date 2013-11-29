@@ -51,7 +51,9 @@
 			<h1 class="teacher_heading">Teacher Options</h1>
 				<div id="my_menu">
 				<ul>
-					<li><a href="addquestion.php">Add Question category</a></li>
+					<li><a href="teacherdashboard.php">Add /Delete Class </a></li>
+					<li><a href="AddQuestion.php">Add Question category</a></li>
+					<li><a href="StartAssesment.php">Start Assesment</a></li>
 				</ul>
 			</div>
 				<form method="post" class="signin button" >
@@ -78,11 +80,11 @@
 				<form method="post" action="#" > 
 					<h1> Delete classes from student sign up </h1> 
 					<p> 
-                                    <div class="styled-select">
-										   <select name="classselected" id="classselected">
-										  <?php echo($table); ?>
-										   </select>
-									</div>
+						<div class="styled-select">
+							<select name="classselected" id="classselected">
+								<?php echo($table); ?>
+							</select>
+						</div>
                                 </p>
 					<p class="signin button"> 
 					<?php if(isset($deletedresult)){ echo "<span class='msg2' id='myMsg2'>Class deleted</span>"; }?>

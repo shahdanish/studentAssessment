@@ -28,6 +28,8 @@ class teacher{
 				$deleteclassname = $_POST['classselected'];
 				$sql = "DELETE FROM class WHERE class_data='$deleteclassname'";
 				$this->dbobj->query($sql);
+				$sql = "DELETE FROM studentdata WHERE std_class='$deleteclassname'";
+				$this->dbobj->query($sql);
 			}
 	}
 	function TeacherAddQuest($post){
