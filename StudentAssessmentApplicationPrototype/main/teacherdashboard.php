@@ -19,6 +19,19 @@
 		$teacherobj->TeacherAddClass($_POST);
 		$result = "class is added";
 	}
+	if(isset($_POST['delclass'])){
+		$teacherobj->TeacherDelClass($_POST);
+		$deletedresult = "class is deleted";
+	}
+	
+	$dbobj= new database();
+	$sql = "SELECT * FROM class";
+	$showresult = $dbobj->query($sql);
+	$table = "";
+	while($row=$dbobj->fetch($showresult)) {   
+	$tablerow = "<option>" . $row['class_data'] . "</option>";
+	$table .= $tablerow;
+}
 ?>
 <html>
 	<head>
@@ -29,23 +42,25 @@
 		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
 	<script>
-			setTimeout("if($('#myMsg').length>0){$('#myMsg').css('display','none');}",4000);
+			setTimeout("if($('#myMsg1').length>0){$('#myMsg1').css('display','none');}",4000);
+			setTimeout("if($('#myMsg2').length>0){$('#myMsg2').css('display','none');}",4000);
 	</script>
  <body>
 	<div class="teacher_panel">
 		<div class="teacher_options">
 			<h1 class="teacher_heading">Teacher Options</h1>
+				<div id="my_menu">
+				<ul>
+					<li><a href="addquestion.php">Add Question category</a></li>
+				</ul>
+			</div>
 				<form method="post" class="signin button" >
 					<p class="signin button"> 
 						<input type="submit" value="logout" name="logout" id="logout" /> 
 						
 					</p>
 				</form>
-			<div id="my_menu">
-				<ul>
-					<li><a href="addquestion.php">Add Question category</a></li>
-				</ul>
-			</div>	
+				
 		</div>
 		<div id="container_demo">
 			<div id="wrapper">
@@ -56,8 +71,22 @@
 						<input id="classtoadd" name="classtoadd" required="required" type="text" placeholder="add in BS-Se-1st format" />
 					</p>
 					<p class="signin button"> 
-						<?php if(isset($result)){ echo "<span class='msg' id='myMsg'>class is added</span>"; }?>
+						<?php if(isset($result)){ echo "<span class='msg1' id='myMsg1'>class is added</span>"; }?>
 						<input type="submit" value="addclass" id="addclass" name="addclass"/> 
+					</p>
+				</form>
+				<form method="post" action="#" > 
+					<h1> Delete classes from student sign up </h1> 
+					<p> 
+                                    <div class="styled-select">
+										   <select name="classselected" id="classselected">
+										  <?php echo($table); ?>
+										   </select>
+									</div>
+                                </p>
+					<p class="signin button"> 
+					<?php if(isset($deletedresult)){ echo "<span class='msg2' id='myMsg2'>Class deleted</span>"; }?>
+						<input type="submit" value="delclass" id="delclass" name="delclass"/> 
 					</p>
 				</form>
 			</div>

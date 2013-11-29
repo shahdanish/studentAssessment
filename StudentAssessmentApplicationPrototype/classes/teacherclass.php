@@ -22,6 +22,14 @@ class teacher{
 				$this->dbobj->query($sql);
 			}
 	}
+	function TeacherDelClass($post){
+		@extract($post);
+		if(isset($_POST['classselected'])){
+				$deleteclassname = $_POST['classselected'];
+				$sql = "DELETE FROM class WHERE class_data='$deleteclassname'";
+				$this->dbobj->query($sql);
+			}
+	}
 	function TeacherAddQuest($post){
 		@extract($post);
 		if(isset($_POST['addquestion'])){

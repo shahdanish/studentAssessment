@@ -48,17 +48,17 @@
 	<div class="teacher_panel">
 		<div class="teacher_options">
 			<h1 class="teacher_heading">Teacher Options</h1>
+				<div id="my_menu">
+					<ul>
+						<li><a href="teacherdashboard.php">Add Class </a></li>
+					</ul>
+				</div>	
+
 				<form method="post" class="signin button" >
 					<p class="signin button"> 
 						<input type="submit" value="logout" name="logout" id="logout" /> 
-						
 					</p>
 				</form>
-				<div id="my_menu">
-				<ul>
-					<li><a href="teacherdashboard.php">Add Class </a></li>
-				</ul>
-			</div>	
 		</div>
 		<div id="container_demo">
 			<div id="wrapper">
