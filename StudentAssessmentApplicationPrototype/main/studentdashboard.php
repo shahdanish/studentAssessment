@@ -15,7 +15,7 @@
 	if(isset($_POST['logout'])){
 		$studentobj->studentSessionDestroy();
 	}
-	if(isset($_POST['ClicktoStart'])){
+	if(isset($_POST['checkTest'])){
 		$studentobj->checkteststatus($_POST);
 	}
 	
@@ -45,7 +45,7 @@
 					</p>
 					<p class="signin button"> 
 						<input type="hidden" name="studentclass" id="studentclass" value="$_SESSION[class]">
-						<input type="submit" value="check test status" name="ClicktoStart" id="ClicktoStart" /> 
+						<input type="submit" value="check test status" name="checkTest" id="checkTest" /> 
 					</p>
 				</form
 			</div>

@@ -22,6 +22,7 @@
 		$teacherobj->TeacherAddQuest($_POST);
 		$show = "question is added";
 	}
+	
 	/*for showing categories*/
 	$dbobj= new database();
 	$sql = "SELECT * FROM questcat";
@@ -47,12 +48,12 @@
  <body>
 	<div class="teacher_panel">
 		<div class="teacher_options">
-			<h1 class="teacher_heading">Teacher Options</h1>
+			<h1 class="teacher_heading"> Teacher Options </h1>
 				<div id="my_menu">
 					<ul>
-						<li><a href="teacherdashboard.php">Add/Delete Class </a></li>
-						<li><a href="AddQuestion.php">Add Question category</a></li>
-						<li><a href="StartAssesment.php">Start Assesment</a></li>
+						<li><a href="teacherdashboard.php"> Add / Delete Class </a></li>
+						<li><a href="teacheraddquestion.php"> Add Question category </a></li>
+						<li><a href="teacherstartassessment.php"> Start Assesment </a></li>
 					</ul>
 				</div>	
 
