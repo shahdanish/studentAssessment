@@ -51,7 +51,28 @@ class teacher{
 				$this->dbobj->query($sql);
 			}
 	}
+	function TeacherStartTest($post){
+		@extract($post);
+		if(isset($_POST['classselected']))
+		{
+			$status="1";
+			$activeclass=$_POST['classselected'];
+			$sql = "INSERT INTO testinfo (test_class,test_status)
+			VALUES ('$activeclass','$status')";
+			$this->dbobj->query($sql);
+		}
 	
+	}function TeacherStopTest($post){
+	@extract($post);
+		if(isset($_POST['classselected']))
+		{
+				$status="";
+				$activeclass=$_POST['classselected'];
+				$sql = "DELETE FROM testinfo WHERE test_class = '$activeclass'"; 
+				$this->dbobj->query($sql);
+		}
+	
+	}
 	function sessionStart($id,$username){
 		//session_start();
 		$_SESSION['id']=$id;

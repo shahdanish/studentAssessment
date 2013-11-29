@@ -15,6 +15,10 @@
 	if(isset($_POST['logout'])){
 		$studentobj->studentSessionDestroy();
 	}
+	if(isset($_POST['ClicktoStart'])){
+		$studentobj->checkteststatus($_POST);
+	}
+	
 ?>
 <html>
 	<head>
@@ -33,12 +37,17 @@
 					<div class="teacher_panel">
 						<p style="text-align:center">Student info  </p>
 						<p style="text-align:center">Student name : <?php  echo $_SESSION['username']; ?> </p>
-						<p style="text-align:center">Class:  <?php echo $_SESSION['clas'];  ?>    </p>
+						<p style="text-align:center">Class:  <?php echo $_SESSION['class'];  ?>    </p>
+						
 					</div>
 					<p class="signin button"> 
 						<input type="submit" value="logout" name="logout" id="logout" /> 
 					</p>
-				</form>
+					<p class="signin button"> 
+						<input type="hidden" name="studentclass" id="studentclass" value="$_SESSION[class]">
+						<input type="submit" value="check test status" name="ClicktoStart" id="ClicktoStart" /> 
+					</p>
+				</form
 			</div>
 		</div>
 	</div>

@@ -28,12 +28,11 @@ class student{
 			  }
 		 }
 	}
-	
 	function sessionStart($id,$username,$clas){
 		//session_start();
 		$_SESSION['id']=$id;
 		$_SESSION['username']=$username;
-		$_SESSION['clas']=$clas;
+		$_SESSION['class']=$clas;
 	}
 	
 	function studentSessionDestroy(){
@@ -41,6 +40,12 @@ class student{
 		session_destroy();
 		header("location:../main/studentsignup.php");
 	}
-	
+	function checkteststatus($post){
+		@extract($post);
+		if (isset($_POST['studentclass'])){
+			$testclass=$_POST['studentclass'];
+			echo"$testclass";
+			}
+		}
 }
 ?>
