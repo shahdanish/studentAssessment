@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 24, 2013 at 05:40 PM
+-- Generation Time: Nov 29, 2013 at 06:26 PM
 -- Server version: 5.6.12-log
 -- PHP Version: 5.4.12
 
@@ -38,14 +38,8 @@ CREATE TABLE IF NOT EXISTS `class` (
 --
 
 INSERT INTO `class` (`class_data`) VALUES
-('asdiad'),
-('bs se 3rd '),
-('bs se 4th'),
-('bsse4th'),
-('komail'),
-('komail123'),
-('new clas'),
-('SDS');
+('bs se 1st'),
+('bs se 2nd');
 
 -- --------------------------------------------------------
 
@@ -68,7 +62,9 @@ INSERT INTO `questcat` (`category`) VALUES
 ('new category'),
 ('new cat also dded'),
 ('new cat also dded'),
-('danish');
+('danish'),
+('social'),
+('sohial');
 
 -- --------------------------------------------------------
 
@@ -81,7 +77,14 @@ CREATE TABLE IF NOT EXISTS `question` (
   `quest_cat` text NOT NULL,
   `quest_id` int(11) NOT NULL AUTO_INCREMENT,
   PRIMARY KEY (`quest_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `question`
+--
+
+INSERT INTO `question` (`quest`, `quest_cat`, `quest_id`) VALUES
+('is this question from social', 'social', 1);
 
 -- --------------------------------------------------------
 
@@ -96,18 +99,14 @@ CREATE TABLE IF NOT EXISTS `studentdata` (
   `std_id` int(11) NOT NULL AUTO_INCREMENT,
   `std_password` varchar(25) NOT NULL,
   PRIMARY KEY (`std_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `studentdata`
 --
 
 INSERT INTO `studentdata` (`std_name`, `std_rollnumber`, `std_class`, `std_id`, `std_password`) VALUES
-('ali', '78', 'bsse4th', 1, '0e97c9b4f891ebbe2755920ef'),
-('asi', '090930', 'komail', 2, 'ae89523f6bb8a730597e5f6da'),
-('asi', '090930', 'komail', 3, 'ae89523f6bb8a730597e5f6da'),
-('asi', '090930', 'komail', 4, 'ae89523f6bb8a730597e5f6da'),
-('asi', '090930', 'komail', 5, 'ae89523f6bb8a730597e5f6da');
+('ali', '12', 'ali', 3, 'ali');
 
 -- --------------------------------------------------------
 
@@ -128,6 +127,29 @@ CREATE TABLE IF NOT EXISTS `teacherinfo` (
 
 INSERT INTO `teacherinfo` (`teacher_name`, `teacher_pass`, `tid`) VALUES
 ('ali', 'ali123', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testinfo`
+--
+
+CREATE TABLE IF NOT EXISTS `testinfo` (
+  `test_class` text NOT NULL,
+  `test_status` int(1) NOT NULL,
+  `test_id` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`test_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+
+--
+-- Dumping data for table `testinfo`
+--
+
+INSERT INTO `testinfo` (`test_class`, `test_status`, `test_id`) VALUES
+('bs se 2nd', 1, 7),
+('bs se 1st', 1, 8),
+('bs se 1st', 1, 9),
+('bs se 1st', 1, 10);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -42,6 +42,7 @@ class student{
 	}
 	function checkteststatus($post){
 		@extract($post);
+		//not working yet
 		if (isset($_POST['studentclass'])){
 			$testclass=$_POST['studentclass'];
 			echo"$testclass";
