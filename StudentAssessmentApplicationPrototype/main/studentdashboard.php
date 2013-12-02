@@ -3,20 +3,19 @@
 	include '../classes/databaseclass.php';
 	include '../classes/studentclass.php';
 	$studentobj = new student();
-	if(!isset($_SESSION['username'])){
-		header("Location:studentsignup.php");
-	}
+	
 	if(isset($_POST['student_name'])&&isset($_POST['student_pass'])){
 		$sname = $_POST['student_name'];
 		$spass = $_POST['student_pass'];
 		$studentobj->checkToStartSession($sname,$spass); 
-	 }
+	}
+	
+	if(!isset($_SESSION['username'])){
+		header("Location:studentsignup.php");
+	}
 	
 	if(isset($_POST['logout'])){
 		$studentobj->studentSessionDestroy();
-	}
-	if(isset($_POST['checkTest'])){
-		$studentobj->checkteststatus($_POST);
 	}
 	
 ?>

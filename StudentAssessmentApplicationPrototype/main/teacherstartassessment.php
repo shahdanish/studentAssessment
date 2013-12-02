@@ -54,10 +54,10 @@
 						<div class="styled-select">
 							<select name="selectClass" id="selectClass">
 							</select>
-							<select name="selectQuestion" id="selectQuestion">
+							<select name="selectQuestion" id="selectQuestionCat">
 							</select>
 						</div>
-                                </p>
+                    </p>
 					<p class="signin button"> 
 						<input type="submit" value="Start Test" id="startTest" name="startTest"/> 
 					</p>
