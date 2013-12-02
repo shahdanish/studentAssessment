@@ -1,9 +1,12 @@
 <?php
-class student{
+class student {
+
 	var $dbobj;
+	
 	function student(){
 		$this->dbobj=new database();
 	}
+	
 	function insertStudent($post){
 		@extract($post);
 		$pass_encrypt=$_POST['var4'];
@@ -17,7 +20,8 @@ class student{
 			echo "problem occur values not inserted";
 		}
 	}
-	function checkToStartSession($tn,$tp){
+	
+	function checkToStartSession($tn,$tp) {
 		$sql = "SELECT * FROM studentdata";
 		$result = $this->dbobj->query($sql);
 		while($row = mysql_fetch_assoc($result)){
@@ -28,6 +32,7 @@ class student{
 			  }
 		 }
 	}
+	
 	function sessionStart($id,$username,$clas){
 		$_SESSION['id']=$id;
 		$_SESSION['username']=$username;
@@ -39,5 +44,6 @@ class student{
 		session_destroy();
 		header("location:../main/studentsignup.php");
 	}
+	
 }
 ?>
