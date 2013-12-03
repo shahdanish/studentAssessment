@@ -89,12 +89,31 @@ class teacher{
 	
 		$sql = "SELECT * FROM class";
 		$showresult=$this->dbobj->query($sql);
-		$table = "";
+		$classresult = "";
 		while($row=$this->dbobj->fetch($showresult)){
 			$tablerow = "<option>" . $row['class_data'] . "</option>";
-			$table .= $tablerow;
+			$classresult .= $tablerow;
 		}
-		return $table;
+		return $classresult;
 	}
+
+	function TeacherAddSubject($post){
+		@extract($post);
+			$adtoclass=$_POST['addclassselected'];
+			$sub=$_POST['subject'];
+			$sql = "INSERT INTO subject (subject_name,subject_class)
+			VALUES ('$sub','$adtoclass')";
+			$this->dbobj->query($sql);	
+	
+	}
+	
+	function TeacherDelSubject($post){
+		@extract($post);
+			$delclass=$_POST['delclassselected'];
+			$delsub=$_POST['delsubjectselect'];
+			$sql = "DELETE FROM subject WHERE subject_name = '$delsub' && subject_class='$delclass'";
+			$this->dbobj->query($sql);	
+	}
+	
 }
 ?>

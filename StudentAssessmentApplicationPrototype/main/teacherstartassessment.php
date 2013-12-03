@@ -36,6 +36,7 @@
 					<li><a href="teacherdashboard.php"> Add / Delete Class </a></li>
 					<li><a href="teacheraddquestion.php"> Add Question category </a></li>
 					<li><a href="teacherstartassessment.php"> Start Assesment </a></li>
+					<li><a href="teacheraddsubject.php"> Add / Remove Subject </a></li>
 				</ul>
 			</div>
 				<form method="post" class="signin button" >
