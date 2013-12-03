@@ -84,5 +84,17 @@ class teacher{
 		session_destroy();
 		header("location:../main/teacherlogin.php");
 	}
+	
+	function showClasses(){
+	
+		$sql = "SELECT * FROM class";
+		$showresult=$this->dbobj->query($sql);
+		$table = "";
+		while($row=$this->dbobj->fetch($showresult)){
+			$tablerow = "<option>" . $row['class_data'] . "</option>";
+			$table .= $tablerow;
+		}
+		return $table;
+	}
 }
 ?>

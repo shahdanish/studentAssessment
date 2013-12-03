@@ -23,15 +23,8 @@
 		$teacherobj->TeacherDelClass($_POST);
 		$deletedresult = "class is deleted";
 	}
+	$showclasssvalue=$teacherobj->showClasses();
 	
-	$dbobj= new database();
-	$sql = "SELECT * FROM class";
-	$showresult = $dbobj->query($sql);
-	$table = "";
-	while($row=$dbobj->fetch($showresult)) {   
-	$tablerow = "<option>" . $row['class_data'] . "</option>";
-	$table .= $tablerow;
-}
 ?>
 <html>
 	<head>
@@ -82,7 +75,7 @@
 					<p> 
 						<div class="styled-select">
 							<select name="classselected" id="classselected">
-								<?php echo($table); ?>
+								<?php echo($showclasssvalue); ?>
 							</select>
 						</div>
                                 </p>
