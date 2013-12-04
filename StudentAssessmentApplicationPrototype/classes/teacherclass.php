@@ -51,18 +51,8 @@ class teacher{
 				$this->dbobj->query($sql);
 			}
 	}
-	function TeacherStartTest($post){
-		@extract($post);
-		if(isset($_POST['classselected']))
-		{
-			$status="1";
-			$activeclass=$_POST['classselected'];
-			$sql = "INSERT INTO testinfo (test_class,test_status)
-			VALUES ('$activeclass','$status')";
-			$this->dbobj->query($sql);
-		}
 	
-	}function TeacherStopTest($post){
+	function TeacherStopTest($post){
 	@extract($post);
 		if(isset($_POST['classselected']))
 		{
@@ -96,6 +86,18 @@ class teacher{
 		}
 		return $classresult;
 	}
+	
+	function showCategory(){
+	
+		$sql = "SELECT * FROM questcat";
+		$showresult=$this->dbobj->query($sql);
+		$classresult = "";
+		while($row=$this->dbobj->fetch($showresult)){
+			$tablerow = "<option>" . $row['category'] . "</option>";
+			$classresult .= $tablerow;
+		}
+		return $classresult;
+	}
 
 	function TeacherAddSubject($post){
 		@extract($post);
@@ -105,6 +107,20 @@ class teacher{
 			VALUES ('$sub','$adtoclass')";
 			$this->dbobj->query($sql);	
 	
+	}
+	function teacherstartTest(){
+		@extract ($post);
+		if(isset($_POST['selectClass']) && isset($_POST['selectedSubject']) && isset($_POST['selectCat'])){
+		$sclas=$_POST['selectClass'];
+		$ssub=$_POST['selectedSubject'];
+		$scat=$_POST['selectCat'];
+		
+		echo $sclas;
+		echo $ssub;
+		echo $scat;
+		
+		}
+		
 	}
 	
 	function TeacherDelSubject($post){

@@ -24,14 +24,8 @@
 	}
 	
 	/*for showing categories*/
-	$dbobj= new database();
-	$sql = "SELECT * FROM questcat";
-	$result = $dbobj->query($sql);
-	$table = "";
-	while($row=$dbobj->fetch($result)) {   
-	$tablerow = "<option>" . $row['category'] . "</option>";
-	$table .= $tablerow;
-	} 
+	
+	$showcategoryvalue=$teacherobj->showCategory();
 	
 ?>
 <html>
@@ -87,7 +81,7 @@
 					<p> 
 						<div class="styled-select">
 						   <select name="questcatselected" id="questcatselected">
-								<?php echo($table); ?>
+								<?php echo($showcategoryvalue); ?>
 						   </select>
 						</div>
 					</p>

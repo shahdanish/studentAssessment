@@ -12,9 +12,15 @@
 	if(!isset($_SESSION['username'])){
 		header("Location:teacherlogin.php");
 	}
+	if(isset($_POST['startTest'])){
+		$teacherobj->teacherstartTest();
+	}
 	if(isset($_POST['logout'])){
 		$teacherobj->teacherSessionDestroy();
 	}
+	
+	$showclasssvalue=$teacherobj->showClasses();
+	$showcategoryvalue=$teacherobj->showCategory();
 ?>
 <html>
 	<head>
@@ -25,7 +31,10 @@
 		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
 	<script>
-			
+		function selectSubject(){
+		var a=$( "#selectClass" ).val();
+		$("#selectedSubject").load("../includes/showsubject.php",{clas:a});
+	}	
 	</script>
  <body>
 	<div class="teacher_panel">
@@ -53,12 +62,25 @@
 					<h1> Start Assessment </h1> 
 					<p> 
 						<div class="styled-select">
-							<select name="selectClass" id="selectClass">
-							</select>
-							<select name="selectQuestion" id="selectQuestionCat">
-							</select>
+							<select name="selectClass" id="selectClass" onChange="selectSubject()">
+							<?php echo($showclasssvalue); ?>
+							</select>		
 						</div>
                     </p>
+					<p> 
+						<div class="styled-select">
+							<select name="selectedSubject" id="selectedSubject" >
+							</select>		
+						</div>
+                    </p>
+					<p> 
+						<div class="styled-select">
+							<select name="selectCat" id="selectCat">
+							<?php echo($showcategoryvalue); ?>
+							</select>		
+						</div>
+                    </p>
+					
 					<p class="signin button"> 
 						<input type="submit" value="Start Test" id="startTest" name="startTest"/> 
 					</p>
