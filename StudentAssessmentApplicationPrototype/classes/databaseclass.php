@@ -32,7 +32,7 @@ class database
 		return $this->res_result = mysql_query($sql, $this->res_connection);
 	}	
 	
-	function fetch(){	
+	function fetch($result){	
 		return mysql_fetch_assoc($this->res_result);	
 	
 	}

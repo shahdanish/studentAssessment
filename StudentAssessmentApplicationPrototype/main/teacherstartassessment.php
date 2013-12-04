@@ -13,8 +13,12 @@
 		header("Location:teacherlogin.php");
 	}
 	if(isset($_POST['startTest'])){
-		$teacherobj->teacherstartTest();
+		$teacherobj->teacherstartTest($_POST);
 	}
+	if(isset($_POST['stopTest'])){
+		$teacherobj->teacherstopTest();
+	}
+	
 	if(isset($_POST['logout'])){
 		$teacherobj->teacherSessionDestroy();
 	}
@@ -83,6 +87,7 @@
 					
 					<p class="signin button"> 
 						<input type="submit" value="Start Test" id="startTest" name="startTest"/> 
+						<input type="submit" value="Stop Test" id="stopTest" name="stopTest"/> 
 					</p>
 				</form>
 			</div>

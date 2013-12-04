@@ -10,11 +10,18 @@
 		$studentobj->checkToStartSession($sname,$spass); 
 	}
 	
-	if(!isset($_SESSION['username'])){
+	if(!isset($_SESSION['username'])) {
 		header("Location:studentsignup.php");
 	}
 	
-	if(isset($_POST['logout'])){
+	if(isset($_POST['checkTest'])) {
+		$teststatus= $studentobj->checkteststatus();
+		if($teststatus=="start"){
+		$studentdata=$studentobj->showstudent();
+		}
+	}
+	
+	if(isset($_POST['logout'])) {
 		$studentobj->studentSessionDestroy();
 	}
 	
@@ -30,7 +37,7 @@
  <body>
 	<div class="teacher_panel">
 		<div id="container_demo">
-			<div id="wrapper">
+			<div id="wrapper" width=>
 				<form method="post" action="#" > 
 					<h1>  student Assessment Page </h1> 
 					<div class="teacher_panel">
@@ -46,9 +53,40 @@
 						<input type="hidden" name="studentclass" id="studentclass" value="$_SESSION[class]">
 						<input type="submit" value="check test status" name="checkTest" id="checkTest" /> 
 					</p>
-				</form
+				</form>
+			</div>
+		</div>
+		
+		<div id="container_demo">
+			<div id="wrapper" width=>
+					<div class="teacher_panel">
+						<?php
+			if(isset($teststatus))
+			{
+				if($teststatus=="start"){
+				?>
+				<div class="studentshow"> <?php 
+					// echo $_SESSION['starttestclass'];
+					// echo $_SESSION['starttestsub'];
+					// echo $_SESSION['starttestcat'];
+				echo $studentdata;
+				?></div>
+				<?php
+				} else {
+				?>
+				
+				<div> test stoped </div>
+				
+				
+				<?php
+				
+				}
+			}
+		?>
+						
+					</div>
 			</div>
 		</div>
 	</div>
-	</body>
+</body>
  </html>

@@ -45,5 +45,27 @@ class student {
 		header("location:../main/studentsignup.php");
 	}
 	
+	function showstudent(){
+		$clas=$_SESSION['starttestclass'];
+		$sql = "SELECT * FROM studentdata WHERE std_class='$clas'";
+		$showresult=$this->dbobj->query($sql);
+		$classresult = "";
+		while($row=$this->dbobj->fetch($showresult)){
+			$tablerow = "<div>" . $row['std_name'] . "</div>";
+			$classresult .= $tablerow;
+		}
+		return $classresult;
+	}
+	
+	function checkteststatus(){
+	if (isset($_SESSION['starttestclass']) && isset($_SESSION['starttestsub'])&& isset($_SESSION['starttestcat'])&& isset($_SESSION['teststatus'])) {
+			$starttest="start";
+		}
+		else {
+			$starttest="stop";
+		}
+		
+		return $starttest;
+	}
 }
 ?>

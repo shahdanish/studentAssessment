@@ -52,17 +52,6 @@ class teacher{
 			}
 	}
 	
-	function TeacherStopTest($post){
-	@extract($post);
-		if(isset($_POST['classselected']))
-		{
-				$status="";
-				$activeclass=$_POST['classselected'];
-				$sql = "DELETE FROM testinfo WHERE test_class = '$activeclass'"; 
-				$this->dbobj->query($sql);
-		}
-	
-	}
 	function sessionStart($id,$username){
 		//session_start();
 		$_SESSION['id']=$id;
@@ -108,21 +97,25 @@ class teacher{
 			$this->dbobj->query($sql);	
 	
 	}
-	function teacherstartTest(){
+	function teacherstartTest($post){
 		@extract ($post);
 		if(isset($_POST['selectClass']) && isset($_POST['selectedSubject']) && isset($_POST['selectCat'])){
 		$sclas=$_POST['selectClass'];
 		$ssub=$_POST['selectedSubject'];
 		$scat=$_POST['selectCat'];
-		
-		echo $sclas;
-		echo $ssub;
-		echo $scat;
-		
+		$_SESSION['starttestclass']="$sclas";
+		$_SESSION['starttestsub']="$ssub";
+		$_SESSION['starttestcat']="$scat";
+		$_SESSION['teststatus']="1";
+		}	
+	}
+	function teacherstopTest(){
+	unset($_SESSION['starttestclass']);
+	unset($_SESSION['starttestsub']);
+	unset($_SESSION['starttestcat']);
+	$_SESSION['teststatus']="0";
 		}
 		
-	}
-	
 	function TeacherDelSubject($post){
 		@extract($post);
 			$delclass=$_POST['delclassselected'];
