@@ -58,6 +58,23 @@ class student {
 		return $classresult;
 	}
 	
+	function showquestion(){
+		$testclas=$_SESSION['starttestclass'];
+		$testsub=$_SESSION['starttestsub'];
+		$testcat=$_SESSION['starttestcat'];
+		$sql = "SELECT * FROM question WHERE quest_cat='$testcat'";
+		$showresult=$this->dbobj->query($sql);
+		$classresult = "";
+		while($row=$this->dbobj->fetch($showresult)){
+			$testquest= $row['quest'];
+			$qid= $row['quest_id'];
+			
+			$tablerow = "<div >".$testquest."<span id=testradio><input type='radio' id='$qid' name='$qid' value='1'>1<input type='radio' id='$qid' name='$qid' value='2'>2<input type='radio' id='$qid' name='$qid' value='3'>3<input type='radio' id='$qid' name='$qid' value='4'>4</span></div>";
+			$classresult .= $tablerow;
+		}
+		return $classresult;
+	}
+	
 	function checkteststatus(){
 	if (isset($_SESSION['starttestclass']) && isset($_SESSION['starttestsub'])&& isset($_SESSION['starttestcat'])&& isset($_SESSION['teststatus'])) {
 			$starttest="start";

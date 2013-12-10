@@ -13,17 +13,8 @@
 	if(!isset($_SESSION['username'])) {
 		header("Location:studentsignup.php");
 	}
+	$testquestdata=$studentobj->showquestion();
 	
-	if(isset($_POST['checkTest'])) {
-		$teststatus= $studentobj->checkteststatus();
-		if($teststatus=="start"){
-		$studentdata=$studentobj->showstudent();
-		}
-	}
-	
-	if(isset($_POST['logout'])) {
-		$studentobj->studentSessionDestroy();
-	}
 	
 ?>
 <html>
@@ -37,13 +28,22 @@
  <body>
 	<div class="teacher_panel" style="width=100%;">
 		<div id="container_demo">
-			<div id="wrapper" width=>
+			<div id="wrapper">
 				<?php
 				if (isset($_GET['student'])){
-				echo $_GET['student'];
+				echo "<span>Assessment of ".$_GET['student']." by ".$_SESSION['username'] ."</span>";
 				}
-				
+				echo "<br><span>For the class : <b> ". $_SESSION['starttestclass']."</b> <br> For subject of <b>" .$_SESSION['starttestsub']."</b><br>For category of <b>" .$_SESSION['starttestcat']."</b></span>";
 				?>
+			
+			
+			<form name="testdata" id="testdata" method="POST">
+				<?php
+					echo $testquestdata;
+				?>	
+				<input type="submit" id="submittestdata" name="submittestdata" value="submit test data">
+			</form>
+			
 			</div>
 		</div>
 	</div>
