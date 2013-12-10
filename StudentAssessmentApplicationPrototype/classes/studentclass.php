@@ -51,7 +51,8 @@ class student {
 		$showresult=$this->dbobj->query($sql);
 		$classresult = "";
 		while($row=$this->dbobj->fetch($showresult)){
-			$tablerow = "<div>" . $row['std_name'] . "</div>";
+			$student_name= $row['std_name'];
+			$tablerow = "<div><a href=student_test.php?student=$student_name>$student_name</a></div>";
 			$classresult .= $tablerow;
 		}
 		return $classresult;
