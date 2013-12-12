@@ -107,6 +107,15 @@ class teacher{
 		$_SESSION['starttestsub']="$ssub";
 		$_SESSION['starttestcat']="$scat";
 		$_SESSION['teststatus']="1";
+		$sql = "INSERT INTO testinfo (test_class,test_subject,test_category)
+				VALUES ('$sclas','$ssub','$scat')";
+				$result=$this->dbobj->query($sql);
+			if($result){
+				$sql1 = "SELECT max(test_id) AS max FROM testinfo";
+				$result1=$this->dbobj->query($sql1);
+				$row= $this->dbobj->fetch($result1);
+				$_SESSION['test_id']=$row['max'];
+			}
 		}	
 	}
 	function teacherstopTest(){

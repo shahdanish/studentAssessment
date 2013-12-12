@@ -41,7 +41,8 @@ class student {
 	
 	function studentSessionDestroy(){
 		session_start();
-		session_destroy();
+		unset($_SESSION['username']);
+		//session_destroy();
 		header("location:../main/studentsignup.php");
 	}
 	
@@ -52,7 +53,7 @@ class student {
 		$classresult = "";
 		while($row=$this->dbobj->fetch($showresult)){
 			$student_name= $row['std_name'];
-			$tablerow = "<div><a href=student_test.php?student=$student_name>$student_name</a></div>";
+			$tablerow = "<div><a href=studenttest.php?student=$student_name>$student_name</a></div>";
 			$classresult .= $tablerow;
 		}
 		return $classresult;
@@ -65,12 +66,13 @@ class student {
 		$sql = "SELECT * FROM question WHERE quest_cat='$testcat'";
 		$showresult=$this->dbobj->query($sql);
 		$classresult = "";
+		$i=1;
 		while($row=$this->dbobj->fetch($showresult)){
 			$testquest= $row['quest'];
 			$qid= $row['quest_id'];
-			
-			$tablerow = "<div >".$testquest."<span id=testradio><input type='radio' id='$qid' name='$qid' value='1'>1<input type='radio' id='$qid' name='$qid' value='2'>2<input type='radio' id='$qid' name='$qid' value='3'>3<input type='radio' id='$qid' name='$qid' value='4'>4</span></div>";
+			$tablerow = "<div class='question_style'>".$testquest."<span id=testradio><input type='radio' id='$qid' name='$i' value='1'>1<input type='radio' id='$qid' name='$i' value='2'>2<input type='radio' id='$qid' name='$i' value='3'>3<input type='radio' id='$qid' name='$i' value='4'>4</span></div>";
 			$classresult .= $tablerow;
+			$i++;
 		}
 		return $classresult;
 	}
@@ -82,8 +84,29 @@ class student {
 		else {
 			$starttest="stop";
 		}
-		
 		return $starttest;
+	}
+	function testdatatodatabase($post){
+		@extract($post);
+		$username= $_SESSION['username'];
+		$testclas=$_SESSION['starttestclass'];
+		$testsub=$_SESSION['starttestsub'];
+		$testcat=$_SESSION['starttestcat'];
+		$studtobeassesd= $_POST['studenttobeasssed'];
+		$test_id=$_SESSION['test_id'];
+		echo $test_id;
+		$sql = "SELECT * FROM question WHERE quest_cat = '$testcat'";
+		$resultcat=$this->dbobj->query($sql);
+		//$num_rows = mysql_num_rows($resultcat);
+		$i=1;
+		while($row=$this->dbobj->fetch($resultcat)){
+			$testquestion=$row['quest'];
+			$answers = $_POST[$i];
+			 $sql1= "INSERT INTO testdata (studentassessor, studentassessd, category , subject, class, question , answer , testid) 
+			VALUES ('$username', '$studtobeassesd','$testsub','$testclas','$testcat' ,'$testquestion','$answers' ,'$test_id')";
+			$this->dbobj->queryy($sql1);
+			$i++;
+		 }
 	}
 }
 ?>

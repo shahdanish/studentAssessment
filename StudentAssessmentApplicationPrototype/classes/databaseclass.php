@@ -30,6 +30,9 @@ class database
 	/*methods of class*/
 	function query($sql){
 		return $this->res_result = mysql_query($sql, $this->res_connection);
+	}
+	function queryy($sql){
+		return $this->resu_result = mysql_query($sql, $this->res_connection);
 	}	
 	
 	function fetch($result){	
