@@ -94,10 +94,19 @@ class student {
 		$testcat=$_SESSION['starttestcat'];
 		$studtobeassesd= $_POST['studenttobeasssed'];
 		$test_id=$_SESSION['test_id'];
-		echo $test_id;
 		$sql = "SELECT * FROM question WHERE quest_cat = '$testcat'";
 		$resultcat=$this->dbobj->query($sql);
-		//$num_rows = mysql_num_rows($resultcat);
+		$num_rows = mysql_num_rows($resultcat);
+		$err=0;
+		for ($j=1; $j<=$num_rows; $j++){
+			if(!isset($_POST[$j])){
+			$err++;		
+			}	
+		}
+		
+		if($err>0){
+		echo "plz fill the  <h6>".$err ." </h6>  radio buttons to submit again";
+		}else{
 		$i=1;
 		while($row=$this->dbobj->fetch($resultcat)){
 			$testquestion=$row['quest'];
@@ -106,6 +115,7 @@ class student {
 			VALUES ('$username', '$studtobeassesd','$testsub','$testclas','$testcat' ,'$testquestion','$answers' ,'$test_id')";
 			$this->dbobj->queryy($sql1);
 			$i++;
+		 }
 		 }
 	}
 }
