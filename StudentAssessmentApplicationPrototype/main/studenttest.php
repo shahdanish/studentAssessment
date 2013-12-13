@@ -24,7 +24,7 @@
 		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
  <body>
-	<div class="teacher_panel" style="width=100%;">
+	<div class="question_panel">
 		<div id="container_demo">
 			<div id="wrapper">
 			<a href="studentdashboard.php" style="float:right">Go back to your profile</a>
