@@ -66,7 +66,7 @@
 					<h1> Start Assessment </h1> 
 					<p> 
 						<div class="styled-select">
-							<select name="selectClass" id="selectClass" onChange="selectSubject()">
+							<select name="selectClass" id="selectClass" onMouseDown="selectSubject()">
 							<?php echo($showclasssvalue); ?>
 							</select>		
 						</div>

@@ -85,7 +85,7 @@
 						<label for="class" class="class"> Select class to del subject</label>
 					<p> 
 					<div class="styled-select">
-						<select name="delclassselected" id="delclassselected" onChange="selectSubject()" >
+						<select name="delclassselected" id="delclassselected" onMouseDown="selectSubject()" >
 							<?php echo($showclasssvalue); ?>
 						</select>
 					</div>

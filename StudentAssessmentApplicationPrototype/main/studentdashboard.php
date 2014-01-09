@@ -42,8 +42,8 @@
 					<h1>  student Assessment Page </h1> 
 					<div class="teacher_panel">
 						<p style="text-align:center">Student info  </p>
-						<p style="text-align:center">Student name : <?php  echo $_SESSION['username']; ?> </p>
-						<p style="text-align:center">Class:  <?php echo $_SESSION['class'];  ?>    </p>
+						<p style="text-align:center">Student name : <?php  if(isset($_SESSION['username'])) { echo $_SESSION['username']; } ?> </p>
+						<p style="text-align:center">Class:  <?php if(isset($_SESSION['class'])) echo $_SESSION['class'];  ?>    </p>
 						
 					</div>
 					<p class="signin button"> 
