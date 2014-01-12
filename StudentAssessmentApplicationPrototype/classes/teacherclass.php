@@ -3,6 +3,7 @@ class teacher{
 	var $dbobj;
 	function teacher(){
 		$this->dbobj=new database();
+		$this->dbobj2=new database();
 	}
 	function checkToStartSession($tn,$tp){
 		$sql = "SELECT * FROM teacherinfo";
@@ -132,6 +133,72 @@ class teacher{
 			$sql = "DELETE FROM subject WHERE subject_name = '$delsub' && subject_class='$delclass'";
 			$this->dbobj->query($sql);	
 	}
+	
+	function showTest(){
+	
+		$sql = "SELECT * FROM testinfo";
+		$showresult=$this->dbobj->query($sql);
+		$testresult = "";
+		while($row=$this->dbobj->fetch($showresult)){
+			$tablerow = "<option value=".$row['test_id']."> test no : " . $row['test_id'] . "</option>";
+			$testresult .= $tablerow;
+		}
+		return $testresult;
+	}
+	
+	function testClass($testId) {
+		$sql = "SELECT class FROM testdata WHERE testid = $testId";
+		$showresult = $this->dbobj->query($sql);
+		while($row=$this->dbobj->fetch($showresult)){
+			$class = $row['class'];
+		}
+		$queryy = "SELECT * FROM studentdata WHERE std_class = '$class'";
+		$showresult2 = $this->dbobj2->query($queryy);
+		$classStudent = "";
+		while($row2=mysql_fetch_assoc($showresult2)){
+			$tablerow2 = "<option value=".$row2['std_name']."> " . $row2['std_name'] . "</option>";
+			$classStudent .= $tablerow2;
+		}
+			// echo "<input type='text' name='test_id' value=".$testId." />";
+		return $classStudent.="<input type='hidden' name='test_id' value=".$testId." />";
+	}
+	
+	/*one to one report*/
+	function showAssessmentRecord($assessor,$assessed,$test_id) {
+		$assessQuery = "SELECT * FROM testdata WHERE studentassessor = '$assessor' AND studentassessd ='$assessed' AND testid='$test_id'";
+		$reportdata = $this->dbobj->query($assessQuery);
+		$row2=$this->dbobj->fetch($reportdata);
+		$html_result = "<strong>".$row2['studentassessor']."</strong> assessed <strong>".$row2['studentassessd']."</strong> in subject <strong>".$row2['subject']."</strong> category <strong>".
+			$row2['category']."</strong> and class <strong>".$row2['class']. "</strong>";
+		$html_result = $html_result."<table><th> Question </th><th> answer </th>";
+		while($row=$this->dbobj->fetch($reportdata)){
+			$html_result = $html_result.
+				"<tr>
+					</td><td>".$row['question']."</td><td>".$row['answer']."</td>
+				</tr>";
+		}
+		$html_result = $html_result."</table>";
+		return $html_result;
+	}
+	
+	/*one to many reports*/
+	function showAssessmentOnetoMany($assessor,$test_id) {
+		$assessQuery = "SELECT * FROM testdata WHERE studentassessor = '$assessor' AND testid='$test_id'";
+		$reportdata = $this->dbobj->query($assessQuery);
+		$row2=$this->dbobj->fetch($reportdata);
+		$html_result = "<strong>".$row2['studentassessor']."</strong> assessed <strong>".$row2['studentassessd']."</strong> in subject <strong>".$row2['subject']."</strong> category <strong>".
+			$row2['category']."</strong> and class <strong>".$row2['class']. "</strong>";
+		$html_result = $html_result."<table><th> Question </th><th> answer </th>";
+		while($row=$this->dbobj->fetch($reportdata)){
+			$html_result = $html_result.
+				"<tr>
+					<td>".$row['question']."</td><td>".$row['answer']."</td>
+				</tr>";
+		}
+		$html_result = $html_result."</table>";
+		return $html_result;
+	}
+	
 	
 }
 ?>
