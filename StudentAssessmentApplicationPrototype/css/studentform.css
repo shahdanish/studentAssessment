@@ -290,3 +290,13 @@ a{
 	color: #333;
 }
 
+
+/*student dashbord styling*/
+
+.student_panel #wrapper {
+	float: left;
+	width: 40%;
+	padding: 12px;
+	margin: 20px 0px 0px 30px;
+	border: 1px solid rgba(147, 184, 189,0.8);
+}

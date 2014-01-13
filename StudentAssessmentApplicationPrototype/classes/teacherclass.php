@@ -167,7 +167,8 @@ class teacher{
 	function showAssessmentRecord($assessor,$assessed,$test_id) {
 		$assessQuery = "SELECT * FROM testdata WHERE studentassessor = '$assessor' AND studentassessd ='$assessed' AND testid='$test_id'";
 		$reportdata = $this->dbobj->query($assessQuery);
-		$row2=$this->dbobj->fetch($reportdata);
+		$reportdata2 = $this->dbobj2->query($assessQuery);
+		$row2=$this->dbobj2->fetch($reportdata2);
 		$html_result = "<strong>".$row2['studentassessor']."</strong> assessed <strong>".$row2['studentassessd']."</strong> in subject <strong>".$row2['subject']."</strong> category <strong>".
 			$row2['category']."</strong> and class <strong>".$row2['class']. "</strong>";
 		$html_result = $html_result."<table><th> Question </th><th> answer </th>";
@@ -185,7 +186,8 @@ class teacher{
 	function showAssessmentOnetoMany($assessor,$test_id) {
 		$assessQuery = "SELECT * FROM testdata WHERE studentassessor = '$assessor' AND testid='$test_id'";
 		$reportdata = $this->dbobj->query($assessQuery);
-		$row2=$this->dbobj->fetch($reportdata);
+		$reportdata2 = $this->dbobj2->query($assessQuery);
+		$row2=$this->dbobj2->fetch($reportdata2);
 		$html_result = "<strong>".$row2['studentassessor']."</strong> assessed <strong>".$row2['studentassessd']."</strong> in subject <strong>".$row2['subject']."</strong> category <strong>".
 			$row2['category']."</strong> and class <strong>".$row2['class']. "</strong>";
 		$html_result = $html_result."<table><th> Question </th><th> answer </th>";

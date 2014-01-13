@@ -35,7 +35,7 @@
 		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
  <body>
-	<div class="teacher_panel">
+	<div class="student_panel">
 		<div id="container_demo">
 			<div id="wrapper" width=>
 				<form method="post" action="#" > 
