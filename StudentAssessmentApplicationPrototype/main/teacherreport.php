@@ -23,7 +23,20 @@
 		$teacherobj->TeacherDelClass($_POST);
 		$deletedresult = "class is deleted";
 	}
-	$showclasssvalue=$teacherobj->showClasses();
+	
+	if(isset($_POST['showrepo'])) {
+		$testId = $_POST['selectClass'];
+		$showClass = $teacherobj->testClass($testId); 
+	}
+	
+	if(isset($_POST['showAssessment'])) {
+		$assessor = $_POST['assessor'];
+		$assessed = $_POST['assessedBy'];
+		$test_id = $_POST['test_id'];
+		$showAssessment = $teacherobj->showAssessmentRecord($assessor,$assessed,$test_id);
+	}
+	
+	$showtestvalue=$teacherobj->showTest();
 	
 ?>
 <html>
@@ -63,30 +76,49 @@
 		<div id="container_demo">
 			<div id="wrapper">
 				<form method="post" action="#" > 
-					<h1> Add class </h1> 
-					<p> 
-						<label for="usernamesignup" class="uname"> add classes</label>
-						<input id="classtoadd" name="classtoadd" required="required" type="text" placeholder="add in BS-Se-1st format" />
-					</p>
+					<div class="styled-select" >
+						<label class="uname"> Select Test </label>
+						<select name="selectClass" id="selectClass">
+							<?php echo($showtestvalue); ?>
+						</select>
+					</div>
 					<p class="signin button"> 
-						<?php if(isset($result)){ echo "<span class='msg1' id='myMsg1'>class is added</span>"; }?>
-						<input type="submit" value="add" id="addclass" name="addclass"/> 
+						<input type="submit" value="Show Report" id="showrepo" name="showrepo"/>
 					</p>
 				</form>
-				<form method="post" action="#" > 
-					<h1> Delete class </h1> 
-					<p> 
-						<div class="styled-select">
-							<select name="classselected" id="classselected">
-								<?php echo($showclasssvalue); ?>
-							</select>
-						</div>
-                                </p>
-					<p class="signin button"> 
-					<?php if(isset($deletedresult)){ echo "<span class='msg2' id='myMsg2'>Class deleted</span>"; }?>
-						<input type="submit" value="delete" id="delclass" name="delclass"/> 
-					</p>
-				</form>
+				<div class="genericreport">
+					<form method="post" action="#" > 
+						<?php 
+							if(isset($_POST['showrepo'])) {
+								?>
+								<div class="styled-select" >
+									<label class="uname"> Assessor </label>
+									<select name="assessor" id="selectClass">
+										<?php echo $showClass; ?>
+									</select>
+								</div>
+								
+								<div class="styled-select" >
+									<label class="uname"> Assessed By </label>
+									<select name="assessedBy" id="selectClass">
+										<?php echo $showClass; ?>
+									</select>
+								</div>
+								<p class="signin button"> 
+									<input type="submit" value="Show Assessment" id="showAssessment" name="showAssessment"/>
+								</p>
+							<?php
+							}
+						?>
+					</form>
+					<div class="showGenericReport">
+						<?php
+							if(isset($_POST['showAssessment'])) {
+								echo $showAssessment;
+							}
+						?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

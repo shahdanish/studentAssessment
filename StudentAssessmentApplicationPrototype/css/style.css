@@ -429,3 +429,14 @@ p.signin.button span{
 	float: none;
 	padding: 20px 0px 20px 0px;
 }
+
+.showGenericReport table tbody tr th {
+	border: 2px solid #000;
+	padding: 7px;
+	width: 22%;
+}
+
+.showGenericReport table tbody tr td {
+	border: 1px solid #000;
+	padding: 7px;
+}

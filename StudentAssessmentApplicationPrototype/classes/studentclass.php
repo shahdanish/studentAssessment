@@ -105,17 +105,17 @@ class student {
 		}
 		
 		if($err>0){
-		echo "plz fill the  <h6>".$err ." </h6>  radio buttons to submit again";
-		}else{
-		$i=1;
-		while($row=$this->dbobj->fetch($resultcat)){
-			$testquestion=$row['quest'];
-			$answers = $_POST[$i];
-			 $sql1= "INSERT INTO testdata (studentassessor, studentassessd, category , subject, class, question , answer , testid) 
-			VALUES ('$username', '$studtobeassesd','$testsub','$testclas','$testcat' ,'$testquestion','$answers' ,'$test_id')";
-			$this->dbobj->queryy($sql1);
-			$i++;
-		 }
+			echo "plz fill the  <h6>".$err ." </h6>  radio buttons to submit again";
+		} else {
+			$i=1;
+			while($row=$this->dbobj->fetch($resultcat)){
+				$testquestion=$row['quest'];
+				$answers = $_POST[$i];
+				 $sql1= "INSERT INTO testdata (studentassessor, studentassessd, subject , class , category , question , answer , testid) 
+										VALUES ('$username', '$studtobeassesd','$testsub','$testclas','$testcat' ,'$testquestion','$answers' ,'$test_id')";
+				$this->dbobj->queryy($sql1);
+				$i++;
+			 }
 		 }
 	}
 }

@@ -12,19 +12,32 @@
 	if(!isset($_SESSION['username'])){
 		header("Location:teacherlogin.php");
 	}
-	if(isset($_POST['startTest'])){
-		$teacherobj->teacherstartTest($_POST);
-	}
-	if(isset($_POST['stopTest'])){
-		$teacherobj->teacherstopTest();
-	}
-	
 	if(isset($_POST['logout'])){
 		$teacherobj->teacherSessionDestroy();
 	}
+	if(isset($_POST['addclass'])){
+		$teacherobj->TeacherAddClass($_POST);
+		$result = "class is added";
+	}
+	if(isset($_POST['delclass'])){
+		$teacherobj->TeacherDelClass($_POST);
+		$deletedresult = "class is deleted";
+	}
 	
-	$showclasssvalue=$teacherobj->showClasses();
-	$showcategoryvalue=$teacherobj->showCategory();
+	if(isset($_POST['showrepo'])) {
+		$testId = $_POST['selectClass'];
+		$showClass = $teacherobj->testClass($testId); 
+	}
+	
+	if(isset($_POST['showAssessment'])) {
+		$assessor = $_POST['assessor'];
+		// $assessed = $_POST['assessedBy'];
+		$test_id = $_POST['test_id'];
+		$showAssessment = $teacherobj->showAssessmentOnetoMany($assessor,$test_id);
+	}
+	
+	$showtestvalue=$teacherobj->showTest();
+	
 ?>
 <html>
 	<head>
@@ -35,10 +48,8 @@
 		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
 	<script>
-		function selectSubject(){
-		var a=$( "#selectClass" ).val();
-		$("#selectedSubject").load("../includes/showsubject.php",{clas:a});
-	}	
+			setTimeout("if($('#myMsg1').length>0){$('#myMsg1').css('display','none');}",4000);
+			setTimeout("if($('#myMsg2').length>0){$('#myMsg2').css('display','none');}",4000);
 	</script>
  <body>
 	<div class="teacher_panel">
@@ -52,6 +63,7 @@
 					<li><a href="teacheraddsubject.php"> Add / Remove Subject </a></li>
 					<li><a href="teacherreport.php"> Student One to One Reports </a></li>
 					<li><a href="teacheronetomanyreport.php"> Student One to many Reports </a></li>
+					
 				</ul>
 			</div>
 				<form method="post" class="signin button" >
@@ -65,33 +77,43 @@
 		<div id="container_demo">
 			<div id="wrapper">
 				<form method="post" action="#" > 
-					<h1> Start Assessment </h1> 
-					<p> 
-						<div class="styled-select">
-							<select name="selectClass" id="selectClass" onMouseDown="selectSubject()">
-							<?php echo($showclasssvalue); ?>
-							</select>		
-						</div>
-                    </p>
-					<p> 
-						<div class="styled-select">
-							<select name="selectedSubject" id="selectedSubject" >
-							</select>		
-						</div>
-                    </p>
-					<p> 
-						<div class="styled-select">
-							<select name="selectCat" id="selectCat">
-							<?php echo($showcategoryvalue); ?>
-							</select>		
-						</div>
-                    </p>
-					
+					<div class="styled-select" >
+						<label class="uname"> Select Test </label>
+						<select name="selectClass" id="selectClass">
+							<?php echo($showtestvalue); ?>
+						</select>
+					</div>
 					<p class="signin button"> 
-						<input type="submit" value="Start Test" id="startTest" name="startTest"/> 
-						<input type="submit" value="Stop Test" id="stopTest" name="stopTest"/> 
+						<input type="submit" value="Show Report" id="showrepo" name="showrepo"/>
 					</p>
 				</form>
+				<div class="genericreport">
+					<form method="post" action="#" > 
+						<?php 
+							if(isset($_POST['showrepo'])) {
+								?>
+								<div class="styled-select" >
+									<label class="uname"> Assessor </label>
+									<select name="assessor" id="selectClass">
+										<?php echo $showClass; ?>
+									</select>
+								</div>
+								
+								<p class="signin button"> 
+									<input type="submit" value="Show Assessment" id="showAssessment" name="showAssessment"/>
+								</p>
+							<?php
+							}
+						?>
+					</form>
+					<div class="showGenericReport">
+						<?php
+							if(isset($_POST['showAssessment'])) {
+								echo $showAssessment;
+							}
+						?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
