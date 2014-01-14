@@ -4,23 +4,23 @@
 	include '../classes/databaseclass.php';
 	include '../classes/teacherclass.php';
 	$teacherobj = new teacher();
+	if(isset($_POST['teacher_name'])&&isset($_POST['teacher_pass'])){
+		$tname = $_POST['teacher_name'];
+		$tpass = $_POST['teacher_pass'];
+		$teacherobj->checkToStartSession($tname,$tpass); 
+	}
 	if(!isset($_SESSION['username'])){
 		header("Location:teacherlogin.php");
 	}
-	
-	if(isset($_POST['addsubject'])){
-		$teacherobj->TeacherAddSubject($_POST);
-	}
-	
-	if(isset($_POST['delsubject'])){
-		$teacherobj->TeacherDelSubject($_POST);
-	}
-	
 	if(isset($_POST['logout'])){
 		$teacherobj->teacherSessionDestroy();
 	}
 	
-	$showclasssvalue=$teacherobj->showClasses();
+	if(isset($_POST['showAssessment'])) {
+		$test_id = $_POST['Selecttest'];
+		$showAssessment = $teacherobj->showSingleTestReport($test_id);
+	}
+	$showtestforreport=$teacherobj->showTest();
 	
 ?>
 <html>
@@ -32,10 +32,8 @@
 		<script src="../jquery/jquery-1.10.2.js" ></script>
     </head>
 	<script>
-	function selectSubject(){
-		var a=$( "#delclassselected" ).val();
-		$("#delsubjectselect").load("../includes/showsubject.php",{clas:a});
-	}
+			setTimeout("if($('#myMsg1').length>0){$('#myMsg1').css('display','none');}",4000);
+			setTimeout("if($('#myMsg2').length>0){$('#myMsg2').css('display','none');}",4000);
 	</script>
  <body>
 	<div class="teacher_panel">
@@ -51,6 +49,7 @@
 					<li><a href="teacheronetomanyreport.php"> Student One to many Reports </a></li>
 					<li><a href="teacherclassreport.php"> Student Class Report </a></li>
 					<li><a href="teacherallclassreport.php"> Student All Test </a></li>
+					
 				</ul>
 			</div>
 				<form method="post" class="signin button" >
@@ -64,48 +63,25 @@
 		<div id="container_demo">
 			<div id="wrapper">
 				<form method="post" action="#" > 
-					<h1> Add Subject </h1> 
-					<p> 
-						<label for="class" class="class"> Select class to add subject</label>
-					<p> 
-						<div class="styled-select">
-							<select name="addclassselected" id="addclassselected">
-								<?php echo($showclasssvalue); ?>
-							</select>
-						</div>
-                    </p>
-					<p> 
-						<label for="subject" class="subject"> add subject</label>
-						<input id="subject" name="subject" required="required" type="text" placeholder="add subject " />
-					</p>
-					<p class="signin button"> 
-						<input type="submit" value="Add Subject" id="addsubject" name="addsubject"/> 
-					</p>
-				</form>
-				
-				<form method="post" action="#" > 
-					<h1> DElete Subject </h1> 
-					<p> 
-						<label for="class" class="class"> Select class to del subject</label>
-					<p> 
-					<div class="styled-select">
-						<select name="delclassselected" id="delclassselected" onMouseDown="selectSubject()" >
-							<?php echo($showclasssvalue); ?>
+					<div class="styled-select" >
+						<label class="uname"> Select Test </label>
+						<select name="Selecttest" id="selectClass">
+							<?php echo $showtestforreport; ?>
 						</select>
 					</div>
-                    </p>
-					<p> 
-						<div class="styled-select">
-							<select name="delsubjectselect" id="delsubjectselect">
-								
-							</select>
-						</div>
-                    </p>
-					
 					<p class="signin button"> 
-						<input type="submit" value="Del Subject" id="delsubject" name="delsubject"/> 
+						<input type="submit" value="Show Report" id="showAssessment" name="showAssessment"/>
 					</p>
 				</form>
+				<div class="genericreport">
+					<div class="showGenericReport">
+						<?php
+							if(isset($_POST['showAssessment'])) {
+								echo $showAssessment;
+							}
+						?>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

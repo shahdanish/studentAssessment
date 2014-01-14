@@ -147,7 +147,7 @@ class teacher{
 	}
 	
 	function testClass($testId) {
-		$sql = "SELECT class FROM testdata WHERE testid = $testId";
+		$sql = "SELECT class FROM testdata WHERE testid = '$testId'";
 		$showresult = $this->dbobj->query($sql);
 		while($row=$this->dbobj->fetch($showresult)){
 			$class = $row['class'];
@@ -200,7 +200,46 @@ class teacher{
 		$html_result = $html_result."</table>";
 		return $html_result;
 	}
+	/*for class report*/
 	
+	function Classalltest($selectedClass) {
+		$sql = "SELECT * FROM testinfo WHERE test_class = '$selectedClass'";
+		$showresult = $this->dbobj->query($sql);
+		
+		$classStudent = "";
+		while($row=$this->dbobj->fetch($showresult)){
+			$tablerow = "<option value=".$row['test_id']."> " . $row['test_subject']."<strong> and </strong>".$row['test_category']  . "</option>";
+			$classStudent .= $tablerow;
+		}
+		return $classStudent;
+	}
+	function showSingleTestReport($test_id) {
+		$assessQuery = "SELECT * FROM testdata WHERE testid = '$test_id'";
+		$reportdata = $this->dbobj->query($assessQuery);
+		$reportdata2 = $this->dbobj2->query($assessQuery);
+		$row2=$this->dbobj2->fetch($reportdata2);
+		$html_result = "<strong> Test For </strong>".$row2['subject']."<strong> In category </strong>".
+			$row2['category']."<strong> And For class </strong>".$row2['class'];
+		$html_result = $html_result."<table><th> Assesor </th><th> Assesed </th><th> Question </th><th> answer </th>";
+		while($row=$this->dbobj->fetch($reportdata)){
+			$html_result = $html_result.
+				"<tr>
+					<td>".$row['studentassessor']."</td><td>".$row['studentassessd']."</td><td>".$row['question']."</td><td>".$row['answer']."</td>
+				</tr>";
+		}
+		$html_result = $html_result."</table>";
+		return $html_result;
+	}
+	function showTestClasses(){
 	
+		$sql = "SELECT DISTINCT(test_class) FROM testinfo ORDER BY 'test_class'";
+		$showresult=$this->dbobj->query($sql);
+		$classresult = "";
+		while($row=$this->dbobj->fetch($showresult)){
+			$tablerow = "<option>" . $row['test_class'] . "</option>";
+			$classresult .= $tablerow;
+		}
+		return $classresult;
+	}
 }
 ?>

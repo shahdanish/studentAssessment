@@ -25,18 +25,16 @@
 	}
 	
 	if(isset($_POST['showrepo'])) {
-		$testId = $_POST['selectClass'];
-		$showClass = $teacherobj->testClass($testId); 
+		$selectedClass = $_POST['selectClass'];
+		$ShowClassTest = $teacherobj->Classalltest($selectedClass); 
 	}
 	
 	if(isset($_POST['showAssessment'])) {
-		$assessor = $_POST['assessor'];
-		// $assessed = $_POST['assessedBy'];
-		$test_id = $_POST['test_id'];
-		$showAssessment = $teacherobj->showAssessmentOnetoMany($assessor,$test_id);
+		$test_id = $_POST['Selecttest'];
+		$showAssessment = $teacherobj->showSingleTestReport($test_id);
 	}
 	
-	$showtestvalue=$teacherobj->showTest();
+	$showclassforreport=$teacherobj->showTestClasses();
 	
 ?>
 <html>
@@ -82,7 +80,7 @@
 					<div class="styled-select" >
 						<label class="uname"> Select Test </label>
 						<select name="selectClass" id="selectClass">
-							<?php echo($showtestvalue); ?>
+							<?php echo($showclassforreport); ?>
 						</select>
 					</div>
 					<p class="signin button"> 
@@ -95,9 +93,9 @@
 							if(isset($_POST['showrepo'])) {
 								?>
 								<div class="styled-select" >
-									<label class="uname"> Assessor </label>
-									<select name="assessor" id="selectClass">
-										<?php echo $showClass; ?>
+									<label class="uname"> select test to show report </label>
+									<select name="Selecttest" id="selectClass">
+										<?php echo $ShowClassTest; ?>
 									</select>
 								</div>
 								

@@ -51,6 +51,8 @@
 						<li><a href="teacheraddsubject.php"> Add / Remove Subject </a></li>
 						<li><a href="teacherreport.php"> Student One to One Reports </a></li>
 						<li><a href="teacheronetomanyreport.php"> Student One to many Reports </a></li>
+						<li><a href="teacherclassreport.php"> Student Class Report </a></li>
+						<li><a href="teacherallclassreport.php"> Student All Test </a></li>
 					</ul>
 				</div>
 
