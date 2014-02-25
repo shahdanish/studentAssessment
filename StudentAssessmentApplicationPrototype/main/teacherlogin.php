@@ -22,30 +22,29 @@
 	});
 });
 </script>
-        <div class="container">
-            <section>			
-            	
-                <div id="container_demo" >
-                    <div id="wrapper">
-                        <div id="login" class="animate form">
-                            <form  action="teacherdashboard.php" autocomplete="on" method="post"> 
-                                <h1>Teacher Log in</h1> 
-                                <p> 
-                                    <label for="teacher_name" class="teacher_name" data-icon="u" > Your email or username </label>
-                                    <input id="teacher_name" name="teacher_name" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
-                                </p>
-                                <p> 
-                                    <label for="password" class="youpasswd" data-icon="p"> Your password </label>
-                                    <input id="teacher_pass" name="teacher_pass" required="required" type="password" placeholder="eg. X8df!90EO" /> 
-                                </p>
-                                <p class="login button"> 
-                                    <input type="submit" value="Login" /> 
+		<div class="container">
+			<section>
+				<div id="container_demo" >
+					<div id="wrapper">
+						<div id="login" class="animate form">
+							<form  action="teacherdashboard.php" autocomplete="on" method="post"> 
+								<h1>Teacher Log in</h1> 
+								<p> 
+									<label for="teacher_name" class="teacher_name" data-icon="u" > Your email or username </label>
+									<input id="teacher_name" name="teacher_name" required="required" type="text" placeholder="myusername or mymail@mail.com"/>
 								</p>
-                            </form>
-                        </div>
-                    </div>
-                </div>  
-            </section>
-        </div>
+								<p> 
+									<label for="password" class="youpasswd" data-icon="p"> Your password </label>
+									<input id="teacher_pass" name="teacher_pass" required="required" type="password" placeholder="eg. X8df!90EO" /> 
+								</p>
+								<p class="login button"> 
+									<input type="submit" value="Login" /> 
+								</p>
+							</form>
+						</div>
+					</div>
+				</div>  
+			</section>
+		</div>
     </body>
 </html>
