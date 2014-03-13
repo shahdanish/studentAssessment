@@ -47,15 +47,20 @@ class student {
 	}
 	
 	function showstudent(){
-		$clas=$_SESSION['starttestclass'];
-		$sql = "SELECT * FROM studentdata WHERE std_class='$clas'";
-		$showresult=$this->dbobj->query($sql);
-		$classresult = "";
-		while($row=$this->dbobj->fetch($showresult)){
-			$student_name= $row['std_name'];
-			$tablerow = "<div><a href=studenttest.php?student=$student_name>$student_name</a></div>";
-			$classresult .= $tablerow;
+		if($_SESSION['class']==$_SESSION['starttestclass']) {
+			$clas = $_SESSION['starttestclass'];
+			$sql = "SELECT * FROM studentdata WHERE std_class = '$clas'";
+			$showresult=$this->dbobj->query($sql);
+			$classresult = "";
+			while($row=$this->dbobj->fetch($showresult)){
+				$student_name= $row['std_name'];
+				$tablerow = "<div><a href=studenttest.php?student=$student_name>$student_name</a></div>";
+				$classresult .= $tablerow;
+			}
+		} else {
+			$classresult = "Your Test is Not Statrted Yet"; 
 		}
+		
 		return $classresult;
 	}
 	
@@ -108,14 +113,21 @@ class student {
 			echo "plz fill the  <h6>".$err ." </h6>  radio buttons to submit again";
 		} else {
 			$i=1;
+			$avg_ans = 0;
 			while($row=$this->dbobj->fetch($resultcat)){
 				$testquestion=$row['quest'];
 				$answers = $_POST[$i];
+				$avg_ans += $_POST[$i];
 				 $sql1= "INSERT INTO testdata (studentassessor, studentassessd, subject , class , category , question , answer , testid) 
 										VALUES ('$username', '$studtobeassesd','$testsub','$testclas','$testcat' ,'$testquestion','$answers' ,'$test_id')";
 				$this->dbobj->queryy($sql1);
 				$i++;
 			 }
+			 $i=$i-1;
+			 $avg_ans = $avg_ans/$i;
+			$query_avg_answers = "INSERT INTO testaverragereports (assessor, assessed, averrageAnswer , testId) 
+										VALUES ('$username', '$studtobeassesd', '$avg_ans' ,'$test_id')";
+			$this->dbobj->query($query_avg_answers);
 		 }
 	}
 }

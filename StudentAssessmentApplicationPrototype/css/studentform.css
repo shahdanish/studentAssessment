@@ -300,3 +300,8 @@ a{
 	margin: 20px 0px 0px 30px;
 	border: 1px solid rgba(147, 184, 189,0.8);
 }
+
+.teacher_panel .cross_results table tr td {
+	padding: 15px;
+	border: 1px solid grey;
+}

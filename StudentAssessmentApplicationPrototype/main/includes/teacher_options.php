@@ -8,6 +8,7 @@
 			<li><a href="teacheraddsubject.php"> Add / Remove Subject </a></li>
 			<li><a href="teacherreport.php"> Student One to One Reports </a></li>
 			<li><a href="teacheronetomanyreport.php"> Student One to many Reports </a></li>
+			<li><a href="teacheraveragereport.php"> Student Average Reports </a></li>
 		</ul>
 	</div>
 	<form method="post" class="signin button" >

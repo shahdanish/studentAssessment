@@ -241,5 +241,22 @@ class teacher{
 		}
 		return $classresult;
 	}
+	
+	//show student names on x-axis
+	function averageResult($testId) {
+		$sql = "SELECT test_class FROM testinfo WHERE test_id='$testId'";
+		$showresult = $this->dbobj->query($sql);
+		$class=$this->dbobj->fetch($showresult);
+		$class = $class['test_class'];
+		$sql2 = "SELECT std_name FROM studentdata WHERE std_class ='$class'";
+		$stdudent_name = "";
+		$showresult2 = $this->dbobj->query($sql2);
+		while($row=$this->dbobj->fetch($showresult2)){
+			$data = "<td>" . $row['std_name'] . "</td>";
+			$stdudent_name .= $data;
+		}
+		return $stdudent_name;
+	}
+	
 }
 ?>
