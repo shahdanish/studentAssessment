@@ -250,12 +250,38 @@ class teacher{
 		$class = $class['test_class'];
 		$sql2 = "SELECT std_name FROM studentdata WHERE std_class ='$class'";
 		$stdudent_name = "";
-		$showresult2 = $this->dbobj->query($sql2);
-		while($row=$this->dbobj->fetch($showresult2)){
-			$data = "<td>" . $row['std_name'] . "</td>";
+		$stdudent_name_assessed = "<td></td>";
+		$showAns = "";
+		$showClass = mysql_query($sql2);
+		while($row=mysql_fetch_array($showClass)){
+			$data0 = "<td>" . $row['std_name'] . "</td>";
+			$data = "<tr><td>" . $row['std_name'] . "</td>";
 			$stdudent_name .= $data;
+			$stdudent_name_assessed .= $data0;
+			$sql3 = "SELECT std_name FROM studentdata WHERE std_class ='$class'";
+			$showClassAgain = mysql_query($sql3);
+			while($row2=mysql_fetch_array($showClassAgain)){
+				$assessed = $row2['std_name'];
+				$assessor = $row['std_name'];
+				$query = "SELECT * FROM testaverragereports WHERE assessor='$assessor' && assessed='$assessed'";
+				$showAns = mysql_query($query);
+				// print_r($showAns);
+				while($row3=mysql_fetch_array($showAns)){
+					// echo $row3['assessor'];
+					// echo $row['std_name'];
+					if($row3['assessor']==$row['std_name']) {
+						// $data2 = "<td>0</td><td>" . $row3['averrageAnswer'] . "</td>";
+						// echo $row3['averrageAnswer'];
+						echo 'match';
+					}
+					$data2 = "<td>" . $row3['averrageAnswer'] . "</td>";
+					$stdudent_name .= $data2;
+					// echo $row3['averrageAnswer'];
+				}
+			}
+			$stdudent_name.='</tr>';
 		}
-		return $stdudent_name;
+		return $stdudent_name_assessed.$stdudent_name;
 	}
 	
 }

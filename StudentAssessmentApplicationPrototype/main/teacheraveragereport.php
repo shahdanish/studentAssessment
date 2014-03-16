@@ -72,10 +72,7 @@
 				<?php if(isset($_POST['showrepo'])) { ?>
 				<div class="cross_results">
 					<table>
-						<tr>
-							<td></td>
 							<?php echo $showClassStudent ?>
-						</tr>
 					</table>
 				</div>
 				<?php } ?>
