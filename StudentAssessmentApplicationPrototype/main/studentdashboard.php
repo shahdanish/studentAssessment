@@ -14,10 +14,10 @@
 		header("Location:studentsignup.php");
 	}
 	
-	if(isset($_POST['checkTest'])) {
+	if(isset($_POST['checkTest'])||isset($_GET['hide'])) {
 		$teststatus= $studentobj->checkteststatus();
 		if($teststatus=="start"){
-		$studentdata=$studentobj->showstudent();
+			$studentdata=$studentobj->showstudent($_SESSION['username']);
 		}
 	}
 	
@@ -33,14 +33,15 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
 		<script src="../jquery/jquery-1.10.2.js" ></script>
+		<script src="../jquery/studentDashboard.js" ></script>
     </head>
  <body>
 	<div class="student_panel">
 		<div id="container_demo">
 			<div id="wrapper" width=>
 				<form method="post" action="#" > 
-					<h1>  student Assessment Page </h1> 
-					<div class="teacher_panel">
+					<h1>  student Profile </h1> 
+					<div class="studentProfile">
 						<p style="text-align:center">Student info  </p>
 						<p style="text-align:center">Student name : <?php  if(isset($_SESSION['username'])) { echo $_SESSION['username']; } ?> </p>
 						<p style="text-align:center">Class:  <?php if(isset($_SESSION['class'])) echo $_SESSION['class'];  ?>    </p>
@@ -65,19 +66,14 @@
 			{
 				if($teststatus=="start"){
 				?>
-				<div class="studentshow"> <?php 
-					// echo $_SESSION['starttestclass'];
-					// echo $_SESSION['starttestsub'];
-					// echo $_SESSION['starttestcat'];
-				echo $studentdata;
-				?></div>
+				<div class="studentshow">
+					<h1>Class Fellows</h2>
+					<?php echo $studentdata; ?>
+				</div>
 				<?php
 				} else {
 				?>
-				
 				<div> test stoped </div>
-				
-				
 				<?php
 				
 				}

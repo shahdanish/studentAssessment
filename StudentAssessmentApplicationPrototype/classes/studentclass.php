@@ -46,16 +46,23 @@ class student {
 		header("location:../main/studentsignup.php");
 	}
 	
-	function showstudent(){
+	function showstudent($loggedInUser){
 		if($_SESSION['class']==$_SESSION['starttestclass']) {
 			$clas = $_SESSION['starttestclass'];
 			$sql = "SELECT * FROM studentdata WHERE std_class = '$clas'";
 			$showresult=$this->dbobj->query($sql);
 			$classresult = "";
 			while($row=$this->dbobj->fetch($showresult)){
-				$student_name= $row['std_name'];
-				$tablerow = "<div><a href=studenttest.php?student=$student_name>$student_name</a></div>";
-				$classresult .= $tablerow;
+				if($row['std_name']==$loggedInUser) {
+					$student_name = "";
+				} else {
+					$student_name = $row['std_name'];
+					$student_id = $row['std_id'];
+				}
+				if ($student_name!="") {
+					$tablerow = "<div class='studentListing'><a href=studenttest.php?student=$student_id&&student_name=$student_name>$student_name</a></div>";
+					$classresult .= $tablerow;
+				}
 			}
 		} else {
 			$classresult = "Your Test is Not Statrted Yet"; 
@@ -75,7 +82,10 @@ class student {
 		while($row=$this->dbobj->fetch($showresult)){
 			$testquest= $row['quest'];
 			$qid= $row['quest_id'];
-			$tablerow = "<div class='question_style'>".$testquest."<span id=testradio><input type='radio' id='$qid' name='$i' value='1'>1<input type='radio' id='$qid' name='$i' value='2'>2<input type='radio' id='$qid' name='$i' value='3'>3<input type='radio' id='$qid' name='$i' value='4'>4</span></div>";
+			$tablerow = "<div class='question_style'>".$testquest."<span id=testradio><input type='radio' id='$qid' name='$i' class='ans' value='1'>1
+																	<input type='radio' id='$qid' name='$i' value='2' class='ans'>2
+																	<input type='radio' id='$qid' name='$i' value='3' class='ans' >3
+																	<input type='radio' id='$qid' name='$i' value='4' class='ans'>4</span></div>";
 			$classresult .= $tablerow;
 			$i++;
 		}
@@ -91,6 +101,17 @@ class student {
 		}
 		return $starttest;
 	}
+
+	function checkteststatusagain(){
+	if (isset($_SESSION['starttestclass']) && isset($_SESSION['starttestsub'])&& isset($_SESSION['starttestcat'])&& isset($_SESSION['teststatus'])) {
+			$starttest="start";
+		}
+		else {
+			$starttest="stop";
+		}
+		return $starttest;
+	}
+
 	function testdatatodatabase($post){
 		@extract($post);
 		$username= $_SESSION['username'];

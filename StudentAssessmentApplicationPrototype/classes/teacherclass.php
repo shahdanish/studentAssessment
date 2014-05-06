@@ -119,14 +119,15 @@ class teacher{
 			}
 		}	
 	}
-	function teacherstopTest(){
-	unset($_SESSION['starttestclass']);
-	unset($_SESSION['starttestsub']);
-	unset($_SESSION['starttestcat']);
-	$_SESSION['teststatus']="0";
-		}
+
+	function teacherstopTest() {
+		unset($_SESSION['starttestclass']);
+		unset($_SESSION['starttestsub']);
+		unset($_SESSION['starttestcat']);
+		$_SESSION['teststatus']="0";
+	}
 		
-	function TeacherDelSubject($post){
+	function TeacherDelSubject($post) {
 		@extract($post);
 			$delclass=$_POST['delclassselected'];
 			$delsub=$_POST['delsubjectselect'];
@@ -134,8 +135,7 @@ class teacher{
 			$this->dbobj->query($sql);	
 	}
 	
-	function showTest(){
-	
+	function showTest() {
 		$sql = "SELECT * FROM testinfo";
 		$showresult=$this->dbobj->query($sql);
 		$testresult = "";
@@ -149,7 +149,7 @@ class teacher{
 	function testClass($testId) {
 		$sql = "SELECT class FROM testdata WHERE testid = '$testId'";
 		$showresult = $this->dbobj->query($sql);
-		while($row=$this->dbobj->fetch($showresult)){
+		while($row=mysql_fetch_assoc($showresult)){
 			$class = $row['class'];
 		}
 		$queryy = "SELECT * FROM studentdata WHERE std_class = '$class'";
@@ -188,13 +188,12 @@ class teacher{
 		$reportdata = $this->dbobj->query($assessQuery);
 		$reportdata2 = $this->dbobj2->query($assessQuery);
 		$row2=$this->dbobj2->fetch($reportdata2);
-		$html_result = "<strong>".$row2['studentassessor']."</strong> assessed <strong>".$row2['studentassessd']."</strong> in subject <strong>".$row2['subject']."</strong> category <strong>".
-			$row2['category']."</strong> and class <strong>".$row2['class']. "</strong>";
-		$html_result = $html_result."<table><th> Question </th><th> answer </th>";
+		$html_result = "<strong>".$row2['studentassessor']." assessed following students </strong>";
+		$html_result = $html_result."<table><th> Question </th><th> Answer </th><th> Student Assessed </th>";
 		while($row=$this->dbobj->fetch($reportdata)){
 			$html_result = $html_result.
 				"<tr>
-					<td>".$row['question']."</td><td>".$row['answer']."</td>
+					<td>".$row['question']."</td><td>".$row['answer']."</td><td>".$row['studentassessd']."</td>
 				</tr>";
 		}
 		$html_result = $html_result."</table>";
@@ -242,8 +241,9 @@ class teacher{
 		return $classresult;
 	}
 	
-	//show student names on x-axis
+	//show student names on x-axis and y-axis
 	function averageResult($testId) {
+		$data3="";
 		$sql = "SELECT test_class FROM testinfo WHERE test_id='$testId'";
 		$showresult = $this->dbobj->query($sql);
 		$class=$this->dbobj->fetch($showresult);
@@ -263,21 +263,19 @@ class teacher{
 			while($row2=mysql_fetch_array($showClassAgain)){
 				$assessed = $row2['std_name'];
 				$assessor = $row['std_name'];
-				$query = "SELECT * FROM testaverragereports WHERE assessor='$assessor' && assessed='$assessed'";
+				// echo $assessed."and".$assessor.'<br>';
+				$query = "SELECT * FROM testaverragereports WHERE assessor='$assessor' && assessed='$assessed' && testId='$testId'";$query = "SELECT * FROM testaverragereports WHERE assessor='$assessor' && assessed='$assessed' && testId='$testId'";
 				$showAns = mysql_query($query);
-				// print_r($showAns);
-				while($row3=mysql_fetch_array($showAns)){
-					// echo $row3['assessor'];
-					// echo $row['std_name'];
-					if($row3['assessor']==$row['std_name']) {
-						// $data2 = "<td>0</td><td>" . $row3['averrageAnswer'] . "</td>";
-						// echo $row3['averrageAnswer'];
-						echo 'match';
-					}
-					$data2 = "<td>" . $row3['averrageAnswer'] . "</td>";
-					$stdudent_name .= $data2;
-					// echo $row3['averrageAnswer'];
+				if($assessed==$assessor) {
+					$data3 = "<td>NULL</td>";
+				} else {
+					$data3 = "";
 				}
+				while($row3=mysql_fetch_array($showAns)){
+					$data2 = $data3."<td>" . $row3['averrageAnswer'] . "</td>";
+					$stdudent_name .= $data2;
+				}
+				$stdudent_name .= $data3;
 			}
 			$stdudent_name.='</tr>';
 		}

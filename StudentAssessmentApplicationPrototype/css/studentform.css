@@ -293,6 +293,23 @@ a{
 
 /*student dashbord styling*/
 
+.student_panel .studentshow .studentListing {
+	text-align: center;
+	font-size: 22px;
+	display: block;
+}
+
+.student_panel .studentshow .studentListing a {
+	display: block;
+	text-decoration: none !important;
+	border-bottom: 1px solid #B9B7B7;
+	padding: 12px 0px 12px 0px;
+}
+
+.student_panel .studentshow .studentListing:last-child a {
+	border-bottom: 0;
+}
+
 .student_panel #wrapper {
 	float: left;
 	width: 40%;
@@ -304,4 +321,20 @@ a{
 .teacher_panel .cross_results table tr td {
 	padding: 15px;
 	border: 1px solid grey;
+}
+
+#testStatus .testStartMessage {
+	color: #4E4444;
+	font-size: 28px;
+	padding: 12px 0px 12px 0px;
+	margin-left: 68px;
+	text-transform: uppercase;
+}
+
+#testStatus .testStopMessage {
+	color: #4E4444;
+	font-size: 28px;
+	padding: 12px 0px 12px 0px;
+	margin-left: 68px;
+	text-transform: uppercase;
 }
