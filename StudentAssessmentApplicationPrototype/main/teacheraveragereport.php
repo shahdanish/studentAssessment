@@ -46,6 +46,7 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
 		<script src="../jquery/jquery-1.10.2.js" ></script>
+		<script src="../jquery/studentDashboard.js" ></script>
     </head>
 	<script>
 			setTimeout("if($('#myMsg1').length>0){$('#myMsg1').css('display','none');}",4000);
@@ -75,6 +76,14 @@
 							<?php echo $showClassStudent ?>
 					</table>
 				</div>
+				<?php } ?>
+
+				<?php if(isset($_POST['showrepo'])) { ?>
+					<div class="checkBiasingEntryAverage">
+						<p class="signin button"> 
+							<input type="button" value="Check Biasing" class="checkBiasing"> 
+						</p>
+					</div>
 				<?php } ?>
 			</div>
 		</div>

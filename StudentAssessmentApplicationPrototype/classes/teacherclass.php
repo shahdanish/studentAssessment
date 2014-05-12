@@ -140,7 +140,7 @@ class teacher{
 		$showresult=$this->dbobj->query($sql);
 		$testresult = "";
 		while($row=$this->dbobj->fetch($showresult)){
-			$tablerow = "<option value=".$row['test_id']."> test no : " . $row['test_id'] . "</option>";
+			$tablerow = "<option value=".$row['test_id']."> test no : " . $row['test_id'] ."  taken by class : ".  $row['test_class'] . "</option>";
 			$testresult .= $tablerow;
 		}
 		return $testresult;
@@ -149,18 +149,23 @@ class teacher{
 	function testClass($testId) {
 		$sql = "SELECT class FROM testdata WHERE testid = '$testId'";
 		$showresult = $this->dbobj->query($sql);
+		$class = "";
 		while($row=mysql_fetch_assoc($showresult)){
 			$class = $row['class'];
 		}
-		$queryy = "SELECT * FROM studentdata WHERE std_class = '$class'";
-		$showresult2 = $this->dbobj2->query($queryy);
 		$classStudent = "";
-		while($row2=mysql_fetch_assoc($showresult2)){
-			$tablerow2 = "<option value=".$row2['std_name']."> " . $row2['std_name'] . "</option>";
-			$classStudent .= $tablerow2;
+		if($class!="") {
+			$queryy = "SELECT * FROM studentdata WHERE std_class = '$class'";
+			$showresult2 = $this->dbobj2->query($queryy);
+			while($row2=mysql_fetch_assoc($showresult2)){
+				$tablerow2 = "<option value=".$row2['std_name']."> " . $row2['std_name'] . "</option>";
+				$classStudent .= $tablerow2;
+			}
+				// echo "<input type='text' name='test_id' value=".$testId." />";
+			return $classStudent.="<input type='hidden' name='test_id' value=".$testId." />";
+		} else {
+			return $classStudent = 1;
 		}
-			// echo "<input type='text' name='test_id' value=".$testId." />";
-		return $classStudent.="<input type='hidden' name='test_id' value=".$testId." />";
 	}
 	
 	/*one to one report*/
@@ -185,22 +190,46 @@ class teacher{
 	/*one to many reports*/
 	function showAssessmentOnetoMany($assessor,$test_id) {
 		$assessQuery = "SELECT * FROM testdata WHERE studentassessor = '$assessor' AND testid='$test_id'";
+		$getCategory = "SELECT category FROM testdata WHERE studentassessor = '$assessor' AND testid='$test_id'";
+		$categoryData = $this->dbobj->query($getCategory);
+		$catValue = $this->dbobj->fetch($categoryData);
+		$catVal = $catValue['category'];
 		$reportdata = $this->dbobj->query($assessQuery);
 		$reportdata2 = $this->dbobj2->query($assessQuery);
 		$row2=$this->dbobj2->fetch($reportdata2);
 		$html_result = "<strong>".$row2['studentassessor']." assessed following students </strong>";
-		$html_result = $html_result."<table><th> Question </th><th> Answer </th><th> Student Assessed </th>";
-		while($row=$this->dbobj->fetch($reportdata)){
+		$html_result = $html_result."<div class='manyReport'><div class='questionStyle'><span class='headingQuestion'> Question </span>";
+		$getQuesetion = "SELECT * FROM question WHERE quest_cat = '$catVal'";
+		$questionData = $this->dbobj->query($getQuesetion);
+		while ($questionFetch = $this->dbobj->fetch($questionData)) {
 			$html_result = $html_result.
-				"<tr>
-					<td>".$row['question']."</td><td>".$row['answer']."</td><td>".$row['studentassessd']."</td>
-				</tr>";
+			"<span>".$questionFetch['quest']."</span>";
 		}
-		$html_result = $html_result."</table>";
+		$html_result = $html_result."</div>";
+		$name = "";
+		$count = 0;
+		$htm_div = "";
+		while($row= mysql_fetch_assoc($reportdata)) {
+			if ($name != $row['studentassessd']) {
+				if ($count==0) {
+					$html_div = "<div class='answerData'>";
+					$count++;
+				} else {
+					$html_div = "</div><div class='answerData'>";
+				}
+				$html_name = "<span class='studentName'>".$row['studentassessd']."</span>";
+				$html_result = $html_result.$html_div.$html_name;
+				$name = $row['studentassessd'];
+			}
+			$attachDataToClass = $row['answer'];
+			$html_result = $html_result.
+			"<span class='$attachDataToClass'>".$row['answer']."</span>";
+		}
+		$html_result = $html_result."</div>";
 		return $html_result;
 	}
+
 	/*for class report*/
-	
 	function Classalltest($selectedClass) {
 		$sql = "SELECT * FROM testinfo WHERE test_class = '$selectedClass'";
 		$showresult = $this->dbobj->query($sql);
@@ -272,7 +301,8 @@ class teacher{
 					$data3 = "";
 				}
 				while($row3=mysql_fetch_array($showAns)){
-					$data2 = $data3."<td>" . $row3['averrageAnswer'] . "</td>";
+					$checkBiasing = $row3['averrageAnswer'];
+					$data2 = $data3."<td class='$checkBiasing'>" . $row3['averrageAnswer'] . "</td>";
 					$stdudent_name .= $data2;
 				}
 				$stdudent_name .= $data3;

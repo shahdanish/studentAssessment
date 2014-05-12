@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	//echo "thsii is session".$_SESSION['username'];
+	//echo "this is session".$_SESSION['username'];
 	include '../classes/databaseclass.php';
 	include '../classes/teacherclass.php';
 	$teacherobj = new teacher();
@@ -46,6 +46,7 @@
         <link rel="stylesheet" type="text/css" href="../css/style.css" />
 		<link rel="stylesheet" type="text/css" href="../css/animate-custom.css" />
 		<script src="../jquery/jquery-1.10.2.js" ></script>
+		<script src="../jquery/studentDashboard.js" ></script>
     </head>
 	<script>
 			setTimeout("if($('#myMsg1').length>0){$('#myMsg1').css('display','none');}",4000);
@@ -73,18 +74,22 @@
 					<form method="post" action="#" > 
 						<?php 
 							if(isset($_POST['showrepo'])) {
-								?>
-								<div class="styled-select" >
-									<label class="uname"> Assessor </label>
-									<select name="assessor" id="selectClass">
-										<?php echo $showClass; ?>
-									</select>
-								</div>
-								
-								<p class="signin button"> 
-									<input type="submit" value="Show Assessment" id="showAssessment" name="showAssessment"/>
-								</p>
-							<?php
+								 if($showClass==1) {
+								 	echo "<div class='whenNoClass'>There is no test here</div>";
+								 } else {
+									?>
+									<div class="styled-select" >
+										<label class="uname"> Assessor </label>
+										<select name="assessor" id="selectClass">
+											<?php echo $showClass; ?>
+										</select>
+									</div>
+									
+									<p class="signin button"> 
+										<input type="submit" value="Show Assessment" id="showAssessment" name="showAssessment"/>
+									</p>
+								<?php
+								}
 							}
 						?>
 					</form>
@@ -95,6 +100,15 @@
 							}
 						?>
 					</div>
+					<?php if(isset($_POST['showAssessment'])) { ?>
+						<div class="checkBiasingEntry">
+							<p class="signin button"> 
+								<input type="button" value="Check Biasing" class="checkBiasing"> 
+							</p>
+						</div>
+					<?php 
+						}
+					 ?>
 				</div>
 			</div>
 		</div>

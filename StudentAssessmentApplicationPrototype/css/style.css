@@ -447,11 +447,71 @@ p.signin.button span{
 	padding: 7px;
 }
 
-.student_panel .studentProfile{
+.student_panel .studentProfile {
 	background: #FAFAFA;
 	width: 50%;
 	margin: 0 auto;
 	padding: 20px;
 	border: 1px solid #E6E3E3;
 	margin-bottom: 45px;
+}
+
+.showGenericReport .manyReport .questionStyle {
+	float: left;
+	margin-right: 20px;
+}
+
+.showGenericReport .manyReport .questionStyle span.headingQuestion { 
+	font-weight: bold;
+}
+.showGenericReport .manyReport .questionStyle span {
+	display: block;
+	font-weight: bold;
+}
+
+.showGenericReport .manyReport .answerData {
+	float: left;
+	min-width: 85px;
+}
+
+.showGenericReport .manyReport .answerData span.studentName {
+	font-weight: bold;
+}
+
+.showGenericReport .manyReport .answerData span {
+	display: block;
+}
+
+.showGenericReport .manyReport .answerData span.addBorderToFakeRed {
+	background: red;
+}
+
+.showGenericReport .manyReport .answerData span.addBorderToFakeYellow {
+	background: yellow;
+}
+
+.showGenericReport .manyReport span {
+	padding: 20px;
+	border: 1px solid #AA9494;
+}
+
+.teacher_panel .genericreport {
+	display: inline-block;
+	width: 100%;
+}
+
+.teacher_panel .genericreport .showGenericReport strong {
+	font-weight: bold;
+	font-size: 20px;
+	width: 100%;
+	display: inline-block;
+}
+
+.teacher_panel .cross_results {
+	overflow: scroll;
+}
+
+.teacher_panel .genericreport .showGenericReport .manyReport {
+	margin-top: 10px;
+	display: inline-block;
 }

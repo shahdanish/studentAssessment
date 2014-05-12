@@ -5,8 +5,12 @@
 	$studentobj = new student();
 	
 	if(isset($_POST['submittestdata'])){
+		if (isset($_GET['student'])) {
+			$student = $_GET['student'];
+		} else {
+			$student = '';
+		}
 		$studentobj->testdatatodatabase($_POST);
-		$student = $_GET['student'];
 		header("Location:studentdashboard.php?hide=$student");
 	}
 	
@@ -31,6 +35,8 @@
 			<div id="wrapper">
 				<a href="studentdashboard.php" style="float:right">Go back to your profile</a>
 					<?php
+					$studentid = $_GET['student'];
+					echo $studentid;
 					if (isset($_GET['student_name'])){
 						$studentasseed = $_GET['student_name'];
 						$sql = "SELECT std_name FROM studentdata WHERE std_id = '$studentasseed'";

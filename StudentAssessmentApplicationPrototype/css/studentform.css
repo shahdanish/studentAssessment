@@ -165,6 +165,7 @@ a{
 	width: 92%;
 	margin-top: 4px;
 	padding: 10px 5px 10px 32px;
+	font-style: italic;
 	border: 1px solid rgb(178, 178, 178);
 	-webkit-appearance: textfield;
 	-webkit-box-sizing: content-box;
@@ -321,6 +322,14 @@ a{
 .teacher_panel .cross_results table tr td {
 	padding: 15px;
 	border: 1px solid grey;
+}
+
+.teacher_panel .cross_results table tr td.addBorderToFakeRed {
+	background: red;
+}
+
+.teacher_panel .cross_results table tr td.addBorderToFakeYellow {
+	background: yellow;
 }
 
 #testStatus .testStartMessage {

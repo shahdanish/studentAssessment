@@ -1,5 +1,5 @@
 <div class="teacher_options">
-	<h1 class="teacher_heading"> Teacher Options </h1>
+	<h1 class="teacher_heading"> Teacher Panel </h1>
 	<div id="my_menu">
 		<ul>
 			<li><a href="teacherdashboard.php"> Add / Delete Class </a></li>

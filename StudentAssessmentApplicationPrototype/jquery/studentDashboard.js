@@ -17,5 +17,34 @@ $(document).ready(function () {
             alert('You need to select answers for all questions');
         }
      });
+
+    //check biasing of students of one to many reports ...
+    $(".showGenericReport .checkBiasingEntry .checkBiasing").click(function(){
+        $(".showGenericReport .manyReport .answerData span").each(function(){
+            var resultData = $(this).attr('class');
+             if(resultData==4) {
+                $(this).addClass("addBorderToFakeRed");
+            }
+
+            if (resultData==1) {
+                $(this).addClass("addBorderToFakeYellow");
+            }
+        });
+    });
+
+    //check biasing of students of average reports ...
+    $(".checkBiasing").click(function(){
+        $(".cross_results table tbody tr td").each(function(){
+            var resultData = $(this).attr('class');
+            if(resultData==4) {
+                $(this).addClass("addBorderToFakeRed");
+            }
+
+            if (resultData==1) {
+                $(this).addClass("addBorderToFakeYellow");
+            }
+        });
+    });
+
     
 });

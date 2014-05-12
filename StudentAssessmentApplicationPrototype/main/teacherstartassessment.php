@@ -52,7 +52,7 @@
 					<p> 
 						<div class="styled-select">
 							<select name="selectClass" id="selectClass" onMouseDown="selectSubject()">
-							<?php echo($showclasssvalue); ?>
+								<?php echo($showclasssvalue); ?>
 							</select>		
 						</div>
                     </p>
@@ -65,17 +65,20 @@
 					<p> 
 						<div class="styled-select">
 							<select name="selectCat" id="selectCat">
-							<?php echo($showcategoryvalue); ?>
+								<?php echo($showcategoryvalue); ?>
 							</select>		
 						</div>
                     </p>
 					
 					<p class="signin button" id="testStatus"> 
-						<?php if ($_SESSION['teststatus']=='1') {
-							?><span class="testStartMessage">test is start</span><?php
-						} ?>
-						<?php if ($_SESSION['teststatus']=='0') {
-							?><span class="testStopMessage">test is stopped</span><?php
+						<?php
+						if (isset($_SESSION['teststatus'])) {
+							if ($_SESSION['teststatus']=='1') {
+								?><span class="testStartMessage">test is start</span><?php
+							} ?>
+							<?php if ($_SESSION['teststatus']=='0') {
+								?><span class="testStopMessage">test is stopped</span><?php
+							}
 						} ?>
 						<input type="submit" value="Start Test" id="startTest" name="startTest"/> 
 						<input type="submit" value="Stop Test" id="stopTest" name="stopTest"/> 
