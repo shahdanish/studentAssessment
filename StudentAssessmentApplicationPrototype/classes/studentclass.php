@@ -47,18 +47,29 @@ class student {
 	}
 	
 	function showstudent($loggedInUser){
+		$classresult = "";
+		$testIdA = $_SESSION['test_id'];
 		if($_SESSION['class']==$_SESSION['starttestclass']) {
 			$clas = $_SESSION['starttestclass'];
-			$sql = "SELECT * FROM studentdata WHERE std_class = '$clas'";
+			$sql = "SELECT std_name,std_id 
+					FROM studentdata 
+					WHERE 
+						std_class = '$clas'
+						and std_name<>'$loggedInUser'
+						and std_name NOT IN (
+								SELECT assessed 
+								FROM testaverragereports 
+								WHERE assessor = '$loggedInUser' AND testId = $testIdA
+						)";
 			$showresult=$this->dbobj->query($sql);
-			$classresult = "";
-			while($row=$this->dbobj->fetch($showresult)){
-				if($row['std_name']==$loggedInUser) {
-					$student_name = "";
-				} else {
+			$thankU = mysql_num_rows($showresult);
+			if ($thankU==0) {
+				$classresult = "Test is Completed Now";
+			}
+			// get all students of the same class which class belongs to logged in user
+			while($row=mysql_fetch_assoc($showresult)){
 					$student_name = $row['std_name'];
 					$student_id = $row['std_id'];
-				}
 				if ($student_name!="") {
 					$tablerow = "<div class='studentListing'><a href=studenttest.php?student=$student_id&&student_name=$student_name>$student_name</a></div>";
 					$classresult .= $tablerow;

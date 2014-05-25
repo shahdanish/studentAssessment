@@ -84,6 +84,11 @@
 							<input type="button" value="Check Biasing" class="checkBiasing"> 
 						</p>
 					</div>
+					<div class="printAverrageReport">
+						<p class="signin button"> 
+							<input type="button" value="print" class="printRepo"> 
+						</p>
+					</div>
 				<?php } ?>
 			</div>
 		</div>

@@ -35,14 +35,15 @@
 			<div id="wrapper">
 				<a href="studentdashboard.php" style="float:right">Go back to your profile</a>
 					<?php
+
 					$studentid = $_GET['student'];
-					echo $studentid;
 					if (isset($_GET['student_name'])){
 						$studentasseed = $_GET['student_name'];
 						$sql = "SELECT std_name FROM studentdata WHERE std_id = '$studentasseed'";
 						$exec = mysql_query($sql);
 						$studentBeingAssessed = mysql_fetch_assoc($exec);
-						echo "<span>Assessment of ".$studentasseed." by ".$_SESSION['username'] ."</span>";
+						
+						echo "<p>Assessment of <input type='hidden' class='name' value='$studentasseed' />".$studentasseed." by ".$_SESSION['username'] ."</p>";
 					}
 					echo "<br><span>For the class : <b> ". $_SESSION['starttestclass']."</b> <br> For subject of <b>" .$_SESSION['starttestsub']."</b><br>For category of <b>" .$_SESSION['starttestcat']."</b></span>";
 					?>

@@ -58,7 +58,7 @@
 			</div>
 		</div>
 		
-		<div id="container_demo">
+		<div id="studentWrap">
 			<div id="wrapper" width=>
 					<div class="teacher_panel">
 						<?php

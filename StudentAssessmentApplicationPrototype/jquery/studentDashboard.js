@@ -2,17 +2,16 @@ $(document).ready(function () {
     //Event handler for clicking next button
     $("#submittestdata").click(function (e) {
         //Selecting Each radio button
+        all_answered = false;
         $(".testForm input:radio").each(function () {
             var name = $(this).attr("name");
             //Checking whether radio button is selected and based on selection setting variable to true or false
             if ($(".testForm input:radio[name=" + name + "]:checked").length == 0) {
-                all_answered = false;
-            } else {
-            	all_answered = true;
-            }
+                all_answered = true;
+            } 
         });
         //Show the error message to user if all questions are not answered
-        if (all_answered == false) {
+        if (all_answered == true) {
              e.preventDefault();//Put it here
             alert('You need to select answers for all questions');
         }
@@ -46,5 +45,24 @@ $(document).ready(function () {
         });
     });
 
+
+    $(".printRepo").click(function () {
+        var link = "<link href='../css/style.css' rel=\'stylesheet\' type=\'text/css\'/>";
+        var divContents = $(".teacher_panel .cross_results").html();
+        var printWindow = window.open('', '', 'height=400,width=800');
+        printWindow.document.write('<html><head><title>Print Report</title>');
+        printWindow.document.write(link);
+        printWindow.document.write('</head><body class=styelPrintDocument >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+        $("bodyClass").css({
+            "background":"yellow"
+        });
+    });
+
     
 });
+
+

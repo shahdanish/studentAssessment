@@ -197,14 +197,11 @@ a{
 /*teacher dashbord styling*/
 .teacher_panel .teacher_options{
 	width: 350px;
-	min-height: 200px;
+	min-height: 600px;
 	float: left;
-	margin: 20px 20px 0px 20px;
+	margin: 20px 20px 20px 0px;
 	background: rgb(247, 247, 247);
 	border: 1px solid rgba(147, 184, 189,0.8);
-	-webkit-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
-	-moz-box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
-	box-shadow: 0pt 2px 5px rgba(105, 108, 109, 0.7),	0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
 	-webkit-box-shadow: 5px;
 	-moz-border-radius: 5px;
 	border-radius: 5px;
@@ -213,7 +210,7 @@ a{
 	float: left;
 	width: 60%;
 	padding: 12px;
-	margin: 20px 0px 0px 30px;
+	margin: 20px 0px 0px 0px;
 	border: 1px solid rgba(147, 184, 189,0.8);
 }
 .teacher_panel .teacher_options h1{
@@ -237,40 +234,47 @@ a{
 	text-align: right;
 	margin: 5px 13px 0px 0px;
 }
- p.button input{
-	width: 30%;
-	cursor: pointer;	
+p.button input{
+	width: auto;
+	cursor: pointer;
 	background: rgb(61, 157, 179);
-	padding: 8px 5px;
+	padding: 6px 35px;
 	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
 	color: #fff;
-	font-size: 24px;	
-	border: 1px solid rgb(28, 108, 122);	
-	margin-bottom: 10px;	
+	font-size: 16px;
+	border: 1px solid rgb(28, 108, 122);
+	margin-bottom: 10px;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-webkit-border-radius: 3px;
-	   -moz-border-radius: 3px;
-	        border-radius: 3px;	
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	-webkit-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
-	   -moz-box-shadow:0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
-	        box-shadow:0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
+	 0px 0px 0px 3px rgb(254, 254, 254),
+	 0px 5px 3px 3px rgb(210, 210, 210);
+	-moz-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+	 0px 0px 0px 3px rgb(254, 254, 254),
+	 0px 5px 3px 3px rgb(210, 210, 210);
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+	 0px 0px 0px 3px rgb(254, 254, 254),
+	 0px 5px 3px 3px rgb(210, 210, 210);
 	-webkit-transition: all 0.2s linear;
-	   -moz-transition: all 0.2s linear;
-	     -o-transition: all 0.2s linear;
-	        transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
 }
 #register .show_msg,#register .error{
 	float: left;
+	color: green;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 #my_menu {
 }
+#my_menu li.active {
+	background: rgb(27, 108, 128);
+}
+
 #my_menu li{
 	color:white;
 	margin :0 auto;
@@ -281,7 +285,7 @@ a{
 	padding: 8px 5px;
 	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
 	color: #fff;
-	font-size: 24px;
+	font-size: 18px;
 	margin-bottom: 10px;	
 }
 #my_menu li a {
@@ -296,8 +300,15 @@ a{
 
 .student_panel .studentshow .studentListing {
 	text-align: center;
-	font-size: 22px;
+	font-size: 18px;
 	display: block;
+	text-transform: capitalize;
+	background-color: #EFEFF7;
+	border: 1px solid #fff;
+}
+
+.student_panel .studentshow .studentListing:hover {
+	background: #fff;
 }
 
 .student_panel .studentshow .studentListing a {
@@ -305,6 +316,10 @@ a{
 	text-decoration: none !important;
 	border-bottom: 1px solid #B9B7B7;
 	padding: 12px 0px 12px 0px;
+}
+
+.student_panel .studentshow .studentListing a:hover {
+	color: #000;
 }
 
 .student_panel .studentshow .studentListing:last-child a {
@@ -317,6 +332,7 @@ a{
 	padding: 12px;
 	margin: 20px 0px 0px 30px;
 	border: 1px solid rgba(147, 184, 189,0.8);
+	font-family: "Trebuchet MS","Myriad Pro",Arial,sans-serif;
 }
 
 .teacher_panel .cross_results table tr td {
@@ -343,7 +359,11 @@ a{
 #testStatus .testStopMessage {
 	color: #4E4444;
 	font-size: 28px;
-	padding: 12px 0px 12px 0px;
+	padding: 4px 0px 12px 0px;
 	margin-left: 68px;
 	text-transform: uppercase;
+}
+
+#wrapper p.button input#startTest {
+	margin-right: 20px;
 }

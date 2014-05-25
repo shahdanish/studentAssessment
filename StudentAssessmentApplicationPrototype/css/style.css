@@ -140,32 +140,32 @@ input {
 } 
 /*styling both submit buttons */
 #wrapper p.button input{
-	width: 30%;
-	cursor: pointer;	
+	width: auto;
+	cursor: pointer;
 	background: rgb(61, 157, 179);
-	padding: 8px 5px;
+	padding: 6px 35px;
 	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
 	color: #fff;
-	font-size: 24px;	
-	border: 1px solid rgb(28, 108, 122);	
-	margin-bottom: 10px;	
+	font-size: 16px;
+	border: 1px solid rgb(28, 108, 122);
+	margin-bottom: 10px;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
 	-webkit-border-radius: 3px;
-	   -moz-border-radius: 3px;
-	        border-radius: 3px;	
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 	-webkit-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
-	   -moz-box-shadow:0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
-	        box-shadow:0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
-	        0px 0px 0px 3px rgb(254, 254, 254),
-	        0px 5px 3px 3px rgb(210, 210, 210);
+	 0px 0px 0px 3px rgb(254, 254, 254),
+	 0px 5px 3px 3px rgb(210, 210, 210);
+	-moz-box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+	 0px 0px 0px 3px rgb(254, 254, 254),
+	 0px 5px 3px 3px rgb(210, 210, 210);
+	box-shadow: 0px 1px 6px 4px rgba(0, 0, 0, 0.07) inset,
+	 0px 0px 0px 3px rgb(254, 254, 254),
+	 0px 5px 3px 3px rgb(210, 210, 210);
 	-webkit-transition: all 0.2s linear;
-	   -moz-transition: all 0.2s linear;
-	     -o-transition: all 0.2s linear;
-	        transition: all 0.2s linear;
+	-moz-transition: all 0.2s linear;
+	-o-transition: all 0.2s linear;
+	transition: all 0.2s linear;
 }
 #wrapper p.button input:hover{
 	background: rgb(74, 179, 198);
@@ -394,16 +394,15 @@ p.signin.button span{
 }
 
 #testdata #submittestdata {
-	width: 95px;
-	padding: 13px;
-	margin-top: 12px;
 	float: right;
+	margin-top: 20px;
+	width: auto;
 	cursor: pointer;
 	background: rgb(61, 157, 179);
-	padding: 8px 5px;
+	padding: 6px 35px;
 	font-family: 'BebasNeueRegular','Arial Narrow',Arial,sans-serif;
 	color: #fff;
-	font-size: 24px;
+	font-size: 16px;
 	border: 1px solid rgb(28, 108, 122);
 	margin-bottom: 10px;
 	text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
@@ -426,7 +425,7 @@ p.signin.button span{
 }
 
 .question_panel #wrapper{
-	width: 940px;
+	width: 95%;
 	margin: 0 auto;
 	float: none;
 	padding: 20px 20px 20px 20px;
@@ -503,8 +502,8 @@ p.signin.button span{
 .teacher_panel .genericreport .showGenericReport strong {
 	font-weight: bold;
 	font-size: 20px;
-	width: 100%;
 	display: inline-block;
+	width: auto;
 }
 
 .teacher_panel .cross_results {
@@ -513,5 +512,117 @@ p.signin.button span{
 
 .teacher_panel .genericreport .showGenericReport .manyReport {
 	margin-top: 10px;
-	display: inline-block;
+	float: left;
+	width: 100%;
+}
+
+.teacher_panel .checkBiasingEntryAverage {
+	margin-top: 20px;
+}
+
+/* print reports */
+
+.styelPrintDocument table tr td {
+	padding: 15px;
+	border: 1px solid grey;
+}
+
+
+@media (max-width: 1065px) {
+
+	.teacher_panel .teacher_options {
+		width: 95%;
+		margin: 0 auto;
+		float: none;
+		margin-top: 15px;
+		min-height: 100px;
+		display: table;
+	}
+
+	#my_menu li {
+		width: 300px;
+		float: left;
+		margin-left: 17px;
+		border-right: 1px solid black;
+	}
+
+	p.button input {
+		margin: 12px;
+	}
+
+	.teacher_panel #wrapper {
+		float: none;
+		margin: 0 auto;
+		width: 92%;
+		margin-top: 17px;
+	}
+
+	#my_menu {
+		width: 100px;
+		display: table;
+		margin: 0 auto;
+	}
+
+	#testStatus .testStopMessage {
+		color: #4E4444;
+		font-size: 15px;
+		padding: 12px 0px 12px 0px;
+		margin-left: 20px;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
+
+	.student_panel #wrapper {
+		width: 80%;
+		float: none;
+		margin: 0 auto;
+		margin-top: 20px;
+		min-height: 100px;
+		margin-bottom: 20px;
+	}
+
+	.question_panel #wrapper {
+		width: 85%;
+	}
+
+	#wrapper {
+		width: 90%;
+	}
+
+	p.change_link {
+		width: 93%;
+	}
+
+}
+
+@media (max-width: 660px) { 
+
+	.styled-select select {
+		font-size: 10px;
+		padding-left: 4px;
+	}
+
+	#my_menu li {
+		width: 175px;
+	}
+
+	.teacher_panel #wrapper {
+		float: none;
+		margin: 0 auto;
+		width: 87%;
+		margin-top: 17px;
+		padding: 10px;
+	}
+
+	.question_style #testradio {
+		float: none;
+		width: 100%;
+		margin: 12px;
+		display: inline-block;
+	}
+
+	p.change_link {
+		width: 80%;
+	}
+
 }
