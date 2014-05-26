@@ -59,6 +59,7 @@
 	
 		<div id="container_demo">
 			<div id="wrapper">
+				<h1>Show Student One To Many Report</h1>
 				<form method="post" action="#" > 
 					<div class="styled-select" >
 						<label class="uname"> Select Test </label>
@@ -104,6 +105,11 @@
 						<div class="checkBiasingEntry">
 							<p class="signin button"> 
 								<input type="button" value="Check Biasing" class="checkBiasing"> 
+							</p>
+						</div>
+						<div class="printOneToManyReport">
+							<p class="signin button"> 
+								<input type="button" value="print" class="OneManyRepo"> 
 							</p>
 						</div>
 					<?php 

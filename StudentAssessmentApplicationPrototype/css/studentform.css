@@ -335,10 +335,15 @@ p.button input{
 	font-family: "Trebuchet MS","Myriad Pro",Arial,sans-serif;
 }
 
+.teacher_panel .cross_results table tr td.className {
+	background: rgb(226, 236, 250);
+}
 .teacher_panel .cross_results table tr td {
 	padding: 15px;
 	border: 1px solid grey;
 }
+
+
 
 .teacher_panel .cross_results table tr td.addBorderToFakeRed {
 	background: red;

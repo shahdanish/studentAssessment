@@ -31,6 +31,10 @@ class teacher{
 				$this->dbobj->query($sql);
 				$sql = "DELETE FROM studentdata WHERE std_class='$deleteclassname'";
 				$this->dbobj->query($sql);
+				$sql = "DELETE FROM testdata WHERE class='$deleteclassname'";
+				$this->dbobj->query($sql);
+				$sql = "DELETE FROM testinfo WHERE test_class='$deleteclassname'";
+				$this->dbobj->query($sql);
 			}
 	}
 	function TeacherAddQuest($post){
@@ -210,6 +214,8 @@ class teacher{
 		$count = 0;
 		$htm_div = "";
 		while($row= mysql_fetch_assoc($reportdata)) {
+			$className = $row['class'];
+			$categoryName = $row['category'];
 			if ($name != $row['studentassessd']) {
 				if ($count==0) {
 					$html_div = "<div class='answerData'>";
@@ -225,8 +231,9 @@ class teacher{
 			$html_result = $html_result.
 			"<span class='$attachDataToClass'>".$row['answer']."</span>";
 		}
+		$label = "<h1> Test Of ".$className." in ".$categoryName."</h1>";
 		$html_result = $html_result."</div>";
-		return $html_result;
+		return $label.$html_result;
 	}
 
 	/*for class report*/
@@ -273,13 +280,15 @@ class teacher{
 	//show student names on x-axis and y-axis
 	function averageResult($testId) {
 		$data3="";
-		$sql = "SELECT test_class FROM testinfo WHERE test_id='$testId'";
+		$sql = "SELECT * FROM testinfo WHERE test_id='$testId'";
 		$showresult = $this->dbobj->query($sql);
-		$class=$this->dbobj->fetch($showresult);
-		$class = $class['test_class'];
+		while ($test = $this->dbobj->fetch($showresult)) {
+			$class = $test['test_class'];
+			$testCategory = "<h1> Test Category is ".$test['test_category']."</h1>";
+		}
 		$sql2 = "SELECT std_name FROM studentdata WHERE std_class ='$class'";
 		$stdudent_name = "";
-		$stdudent_name_assessed = "<td></td>";
+		$stdudent_name_assessed = "<td class='className'><strong>$class</strong></td>";
 		$showAns = "";
 		$showClass = mysql_query($sql2);
 		while($row=mysql_fetch_array($showClass)){
@@ -309,7 +318,7 @@ class teacher{
 			}
 			$stdudent_name.='</tr>';
 		}
-		return $stdudent_name_assessed.$stdudent_name;
+		return $testCategory.$stdudent_name_assessed.$stdudent_name;
 	}
 	
 }

@@ -49,7 +49,7 @@ $(document).ready(function () {
     $(".printRepo").click(function () {
         var link = "<link href='../css/style.css' rel=\'stylesheet\' type=\'text/css\'/>";
         var divContents = $(".teacher_panel .cross_results").html();
-        var printWindow = window.open('', '', 'height=400,width=800');
+        var printWindow = window.open('', '', 'height=700,width=1200');
         printWindow.document.write('<html><head><title>Print Report</title>');
         printWindow.document.write(link);
         printWindow.document.write('</head><body class=styelPrintDocument >');
@@ -61,6 +61,22 @@ $(document).ready(function () {
             "background":"yellow"
         });
     });
+
+  /*  $(".OneManyRepo").click(function () {
+        var link = "<link href='../css/style.css' rel=\'stylesheet\' type=\'text/css\'/>";
+        var divContents = $(".teacher_panel .showGenericReport").html();
+        var printWindow = window.open('', '', 'height=700,width=1200');
+        printWindow.document.write('<html><head><title>Print Report</title>');
+        printWindow.document.write(link);
+        printWindow.document.write('</head><body class=styelPrintDocument >');
+        printWindow.document.write(divContents);
+        printWindow.document.write('</body></html>');
+        printWindow.document.close();
+        printWindow.print();
+        $("bodyClass").css({
+            "background":"yellow"
+        });
+    });*/
 
     
 });

@@ -12,14 +12,14 @@
 	if(!isset($_SESSION['username'])){
 		header("Location:teacherlogin.php");
 	}
-	if(isset($_POST['logout'])){
+	if(isset($_POST['logout'])) {
 		$teacherobj->teacherSessionDestroy();
 	}
-	if(isset($_POST['addclass'])){
+	if(isset($_POST['addclass'])) {
 		$teacherobj->TeacherAddClass($_POST);
 		$result = "class is added";
 	}
-	if(isset($_POST['delclass'])){
+	if(isset($_POST['delclass'])) {
 		$teacherobj->TeacherDelClass($_POST);
 		$deletedresult = "class is deleted";
 	}
@@ -67,7 +67,7 @@
                                 </p>
 					<p class="signin button"> 
 					<?php if(isset($deletedresult)){ echo "<span class='msg2' id='myMsg2'>Class deleted</span>"; }?>
-						<input type="submit" value="delete" id="delclass" name="delclass"/> 
+						<input type="submit" value="delete" id="delclass" name="delclass" onclick="javascript:return confirm('Are you sure? This will delete all data of the class Class students, Reports etc');"/> 
 					</p>
 				</form>
 			</div>

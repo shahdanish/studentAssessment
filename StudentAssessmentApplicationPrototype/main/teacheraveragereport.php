@@ -29,13 +29,6 @@
 		$showClassStudent = $teacherobj->averageResult($testId); 
 	}
 	
-	if(isset($_POST['showAssessment'])) {
-		$assessor = $_POST['assessor'];
-		$assessed = $_POST['assessedBy'];
-		$test_id = $_POST['test_id'];
-		$showAssessment = $teacherobj->showAssessmentRecord($assessor,$assessed,$test_id);
-	}
-	
 	$showtestvalue=$teacherobj->showTest();
 	
 ?>
@@ -59,6 +52,7 @@
 	
 		<div id="container_demo">
 			<div id="wrapper">
+			<h1>Show Student Average Report</h1>
 				<form method="post" action="#" > 
 					<div class="styled-select" >
 						<label class="uname"> Select Test </label>
